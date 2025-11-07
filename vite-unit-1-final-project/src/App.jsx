@@ -26,6 +26,38 @@ const App = () => {
     setAllVolunteerRegistrations(mockVolunteerRegistrations);
   }, []);
 
+
+  const [registrations, setRegistrations] = useState([]);
+
+  const handleRegister = (data) => {
+    setRegistrations((prev) => [...prev, data]);
+  };
+
+  const handleCancelTask = (registrationIndex, taskId) => {
+    setRegistrations((prev) => {
+      return prev.map((registration, idx) => {
+        if (idx !== registrationIndex) return registration;
+        
+        const updatedTasks = registration.selectedTasks.filter((id) => id !== taskId);
+
+        if (updatedTasks.length === 0) return null;
+        return {...registration, selectedTasks: updatedTasks};
+      }).filter(Boolean);
+ 
+    });
+
+
+  };
+
+
+
+    const getTaskDescription = (taskId) => {
+    const task = allVolunteerTasks.find((task) => task.taskId === taskId); /* either update the taskId's or try to add task.eventId === eventide && ... */
+    return task ? task.description : taskId;  /* maybe the or should just return blank */
+  };
+
+
+
 console.log("allVolunteerEvents", {allVolunteerEvents});
 
 
@@ -43,10 +75,11 @@ console.log("allVolunteerEvents", {allVolunteerEvents});
         /> 
       
         <Route 
-          path="/volunteereventsregistration/:id"
+          path="/volunteerevents/registration/:eventId"
           element={<VolunteerEventsRegistrationPage 
                     volunteerTasks={allVolunteerTasks}
-                    volunteerRegistrations={allVolunteerRegistrations} 
+                    /*volunteerRegistrations={allVolunteerRegistrations}*/ 
+                    onRegister={handleRegister}
                     
                     />} 
         /> 
