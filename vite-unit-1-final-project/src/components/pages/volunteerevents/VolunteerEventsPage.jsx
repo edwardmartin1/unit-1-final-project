@@ -10,7 +10,7 @@ const VolunteerEventsPage = ({volunteerEvents}) => {
             <Link 
                 to={"/volunteerevents/registration/" + event.eventId}
                 key={event.eventId}>
-                    <VolunteerEventCard /*key={event.eventId}*/ event={event} />;
+                    <VolunteerEventCard /*key={event.eventId}*/ event={event} />
             </Link>
         
         );
