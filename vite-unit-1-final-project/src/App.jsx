@@ -24,7 +24,7 @@ const App = () => {
   useEffect(() => {
     setAllVolunteerEvents(mockVolunteerEvents);
     setAllVolunteerTasks(mockVolunteerTasks);
-    setAllVolunteerRegistrations(mockVolunteerRegistrations);
+    /*setAllVolunteerRegistrations(mockVolunteerRegistrations);*/
   }, []);
 
 
@@ -74,7 +74,8 @@ console.log("allVolunteerEvents", {allVolunteerEvents});
         <Route 
           path="/"
           element={<HomePage registrations={registrations} 
-                              setRegistrations={setRegistrations} 
+                              setRegistrations={setRegistrations}
+                              allVolunteerEvents={allVolunteerEvents} 
                               allVolunteerTasks={allVolunteerTasks}
                               />} 
         /> 

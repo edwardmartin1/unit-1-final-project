@@ -1,6 +1,12 @@
 import {Link} from "react-router";
 
-const HomePage = ({registrations, setRegistrations, allVolunteerTasks}) => {
+const HomePage = ({registrations, setRegistrations, allVolunteerEvents, allVolunteerTasks}) => {
+
+console.log("registrations", registrations);
+/*
+  const event = allEvents.filter((event) => event.eventId === eventId)
+*/
+
 
   const handleCancelTask = (registrationIndex, taskId) => {
     setRegistrations((prev) => {
@@ -23,7 +29,16 @@ const HomePage = ({registrations, setRegistrations, allVolunteerTasks}) => {
     return task ? task.description : taskId;  /* maybe the or should just return blank */
   };
 
+  const getEventDate = (eventId) => {
+    console.log(eventId);
+    const event = allVolunteerEvents.find((event) => event.eventId === eventId);
+    return event ? event.date : eventId;
+  };
 
+  const getEventTitle = (eventId) => {
+    const event = allVolunteerEvents.find((event) => event.eventId === eventId);
+    return event ? event.title : eventId;
+  };
 
     return (
         <main>
@@ -44,6 +59,16 @@ const HomePage = ({registrations, setRegistrations, allVolunteerTasks}) => {
                 (
                     registrations.map((registration, idx) => (
                         <div key={idx}> 
+{/*
+                            <p>Event:</p>
+ 
+                            <p>{registration.eventId}</p>
+                            <p>{registration.name}</p>
+                            <p>{registration.email}</p>
+*/}
+                            <p>{getEventDate(registration.eventId)} {" - "}
+                            {getEventTitle(registration.eventId)}</p>
+                            
                             <ul>
                                 {registration.selectedTasks.map((taskId) => (
                                     <li key={taskId}>

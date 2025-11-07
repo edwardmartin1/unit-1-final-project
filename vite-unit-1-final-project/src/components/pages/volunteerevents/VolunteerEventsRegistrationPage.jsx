@@ -9,7 +9,7 @@ export default VolunteerEventsRegistrationPage;
 */
 
 import {useState} from "react";
-import {useParams} from "react-router";
+import {useParams, Link} from "react-router";
 
 const VolunteerEventsRegistrationPage = ({volunteerTasks, onRegister}) => {
   const {eventId} = useParams();
@@ -25,6 +25,8 @@ console.log("got into VolunteerEventsRegistrationPage");
     email: "",
     selectedTasks: [],
   });
+
+  const[isRegistered, setIsRegistered] = useState(false);
 
   const handleChange = (event) => {
     const {name, value} = event.target;
@@ -52,7 +54,9 @@ console.log("got into VolunteerEventsRegistrationPage");
     };
 
     onRegister(registrationData);
-    setFormData({name: "", email: "", selectedTasks:[]}); /* is this needed */
+    setIsRegistered(true);
+ 
+ //   setFormData({name: "", email: "", selectedTasks:[]}); /* is this needed */
 
 
 
@@ -60,6 +64,18 @@ console.log("got into VolunteerEventsRegistrationPage");
 
   
   return (
+    <div>
+        <div>
+            <Link to="/" className="back-link">Back to All Events</Link>
+        </div>
+    
+
+
+
+    <div className="registration-form">
+    {isRegistered ? (<h3>Registration complete.</h3>)
+    :(
+
     <form onSubmit={handleSubmit}>
       <h2>Register for Event {eventId}</h2>
 
@@ -114,6 +130,10 @@ console.log("got into VolunteerEventsRegistrationPage");
 
       <button type="submit">Submit</button>   
     </form>
+    )}
+    
+    </div>
+    </div>      
   );
 
 
