@@ -1,23 +1,36 @@
 
-
-/*
-const VolunteerEventsRegistrationPage = () => {
-
-};
-
-export default VolunteerEventsRegistrationPage;
-*/
-
 import {useState} from "react";
 import {useParams, Link} from "react-router";
 
-const VolunteerEventsRegistrationPage = ({volunteerTasks, onRegister}) => {
-  const {eventId} = useParams();
-console.log("got into VolunteerEventsRegistrationPage");
-  console.log("eventId", eventId);
+const VolunteerEventsRegistrationPage = ({allVolunteerTasks, allVolunteerRegistrations, onRegister}) => {
+    const {eventId} = useParams();
+    
+    console.log("got into VolunteerEventsRegistrationPage");
+    console.log("eventId", eventId);
+
+    let eventTasks = [];
+    eventTasks = allVolunteerTasks.filter((task) => String(task.eventId) === eventId)
+
+console.log("eventTasks", eventTasks);    
+//    console.log("here1");
+//    if (allVolunteerTasks.length === 0) 
+//    {
+//        console.log("allVolunteerTasks is empty");
+//    }
+//    if (allVolunteerRegistrations.length === 0)
+//    {
+//        console.log("allVolunteerRegistrations is empty");
+//    }
 
 
-  const eventTasks = volunteerTasks.filter((task) => task.eventId === eventId)
+    allVolunteerRegistrations.forEach((registration) => {
+        console.log("reg page - forEach registration");
+        registration.selectedTasks.forEach((taskId) => {
+            eventTasks = eventTasks.filter((task) => task.taskId !== taskId)
+        });
+console.log("eventTasks", eventTasks);
+    });
+    console.log("finished looping through registrations");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -28,6 +41,7 @@ console.log("got into VolunteerEventsRegistrationPage");
 
   const[isRegistered, setIsRegistered] = useState(false);
 
+  /* update the stateful variable formData using setter function setFormData */
   const handleChange = (event) => {
     const {name, value} = event.target;
     setFormData((prev) => ({...prev, [name]: value}));
@@ -43,19 +57,33 @@ console.log("got into VolunteerEventsRegistrationPage");
     });
   };
 
+  /* length zero is false, all others is true */
+  const isFormComplete = formData.selectedTasks.length && formData.name && formData.email;
+
   const handleSubmit = (event) => {
     event.preventDefault();
+  
+    if (formData.selectedTasks.length > 0) 
+    {
+        let numberEventId = Number(eventId);
+    
+        const registrationData = {
+            eventId: numberEventId,
+            name: formData.name,
+            email: formData.email,
+            selectedTasks: formData.selectedTasks,
+        };
+//console.log("registrationData", registrationData);
+        onRegister(registrationData);
+        setIsRegistered(true);
+    }
+    else
+    {
 
-    const registrationData = {
-      eventId,
-      name: formData.name,
-      email: formData.email,
-      selectedTasks: formData.selectedTasks,
-    };
+    }
+    
 
-    onRegister(registrationData);
-    setIsRegistered(true);
- 
+
  //   setFormData({name: "", email: "", selectedTasks:[]}); /* is this needed */
 
 
@@ -128,10 +156,15 @@ console.log("got into VolunteerEventsRegistrationPage");
         )
       }         
 
-      <button type="submit">Submit</button>   
+        <button 
+            type="submit"
+            disabled={!isFormComplete}
+            className={isFormComplete ? "btn-enabled" : "btn-disabled"}>
+                Submit
+        </button>   
     </form>
     )}
-    
+
     </div>
     </div>      
   );

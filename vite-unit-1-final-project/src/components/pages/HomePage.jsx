@@ -1,20 +1,24 @@
 import {Link} from "react-router";
 
-const HomePage = ({registrations, setRegistrations, allVolunteerEvents, allVolunteerTasks}) => {
+const HomePage = ({allVolunteerRegistrations, 
+                    setAllVolunteerRegistrations, 
+                    allVolunteerEvents, 
+                    allVolunteerTasks}) => {
 
-console.log("registrations", registrations);
+console.log("allVolunteerRegistrations", allVolunteerRegistrations);
 /*
   const event = allEvents.filter((event) => event.eventId === eventId)
 */
 
 
   const handleCancelTask = (registrationIndex, taskId) => {
-    setRegistrations((prev) => {
+    setAllVolunteerRegistrations((prev) => {
       return prev.map((registration, idx) => {
         if (idx !== registrationIndex) return registration;
         
         const updatedTasks = registration.selectedTasks.filter((id) => id !== taskId);
 
+        /* if removing the final task for an event then remove the entire event */
         if (updatedTasks.length === 0) return null;
         return {...registration, selectedTasks: updatedTasks};
       }).filter(Boolean);
@@ -50,14 +54,15 @@ console.log("registrations", registrations);
 
 
             <h2>All Registrations</h2>
-            {registrations.length === 0 
+            {allVolunteerRegistrations.length === 0 
                 ? 
                 (
                     <p>You have no registrations.</p>
                 ) 
                 : 
                 (
-                    registrations.map((registration, idx) => (
+                    
+                    allVolunteerRegistrations.map((registration, idx) => (
                         <div key={idx}> 
 {/*
                             <p>Event:</p>
