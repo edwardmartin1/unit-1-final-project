@@ -1,11 +1,19 @@
+import {Link} from "react-router";
 import VolunteerEventCard from "./VolunteerEventCard.jsx";
 
 const VolunteerEventsPage = ({volunteerEvents}) => {
     
     console.log("volunteerevents", volunteerEvents);
 
-    let volunteerEventsJSX = volunteerEvents.map((event) => {
-        return <VolunteerEventCard key={event.eventId} event={event} />;
+    let volunteerEventsJSX = [...volunteerEvents].map((event) => {
+        return (
+            <Link 
+                to={"/volunteerevents/registration/" + event.eventId}
+                key={event.eventId}>
+                    <VolunteerEventCard /*key={event.eventId}*/ event={event} />
+            </Link>
+        
+        );
     });
 
     return (

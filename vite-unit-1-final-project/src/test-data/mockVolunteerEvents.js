@@ -70,7 +70,5 @@ export const mockVolunteerEvents =
         description: "Volunteer to help with this weeks meal.",
         criteria: "Volunteers of all ages welcome",
     },
-
-
 ];
 

@@ -1,5 +1,7 @@
+
 export const mockVolunteerRegistrations = 
 [
+/*
     {
         registrationId: 500,
         userId: 100,
@@ -18,5 +20,6 @@ export const mockVolunteerRegistrations =
         eventId: 3,
         taskId: 1,
     },
+*/
 ];
 
