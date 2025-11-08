@@ -55,46 +55,25 @@ const App = () => {
         {
           return event;
         }
-
-
       });
-  
-//old sort      sortedAllVolunteerRegistrations = 
-//old sort        [...updatedAllVolunteerRegistrations].sort((a, b) => a.eventId.localeCompare(b.eventId));
-  
-  
+    
       sortedAllVolunteerRegistrations = 
         [...updatedAllVolunteerRegistrations].sort((a, b) => a.eventId - b.eventId);
-
-      //setAllVolunteerRegistrations(updatedAllVolunteerRegistrations);
-
     }
     else
     {
       /* adding event for the first time and the selected tasks */
-
-
-
-      //junk  const updatedAllVolunteerRegistrations2 = [...allVolunteerRegistrations, data];
-      
-//      sortedAllVolunteerRegistrations = 
-//        [...updatedAllVolunteerRegistrations, data].sort((a, b) => a.eventId.localeCompare(b.eventId));
-
       sortedAllVolunteerRegistrations = 
         [...allVolunteerRegistrations, data].sort((a, b) => a.eventId - b.eventId);
-
-        ///setAllVolunteerRegistrations((prev) => [...prev, data]);
     }  
 
     setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
 
     console.log("here in App.jsx");
-  //let sortedAllVolunteerRegistrations = [...allVolunteerRegistrations].sort((a, b) => a.eventId.localeCompare(b.eventId));
-  ///let sortedAllVolunteerRegistrations = [...allVolunteerRegistrations];
-  ///console.log("sortedAllVolunteerRegistrations", sortedAllVolunteerRegistrations);
-  //setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
-
+  
   };
+
+
 
 
 
@@ -185,10 +164,10 @@ console.log("allVolunteerEvents", {allVolunteerEvents});
       <Routes>
         <Route 
           path="/"
-          element={<HomePage allVolunteerRegistrations={allVolunteerRegistrations} 
-                              setAllVolunteerRegistrations={setAllVolunteerRegistrations}
-                              allVolunteerEvents={allVolunteerEvents} 
-                              allVolunteerTasks={allVolunteerTasks}
+          element={<HomePage allVolunteerEvents={allVolunteerEvents}
+                             allVolunteerTasks={allVolunteerTasks}       
+                             allVolunteerRegistrations={allVolunteerRegistrations} 
+                             setAllVolunteerRegistrations={setAllVolunteerRegistrations}
                               />} 
         /> 
       
@@ -201,9 +180,10 @@ console.log("allVolunteerEvents", {allVolunteerEvents});
         <Route 
           path="/volunteerevents/registration/:eventId"
           element={<VolunteerEventsRegistrationPage 
+                    allVolunteerEvents={allVolunteerEvents}
                     allVolunteerTasks={allVolunteerTasks}
                     allVolunteerRegistrations={allVolunteerRegistrations} 
-                    onRegister={handleRegister}
+                    setAllVolunteerRegistrations={setAllVolunteerRegistrations}
                     />} 
         /> 
       

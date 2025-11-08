@@ -1,9 +1,9 @@
 import {Link} from "react-router";
 
-const HomePage = ({allVolunteerRegistrations, 
-                    setAllVolunteerRegistrations, 
-                    allVolunteerEvents, 
-                    allVolunteerTasks}) => {
+const HomePage = ({allVolunteerEvents, 
+                   allVolunteerTasks,
+                   allVolunteerRegistrations,
+                   setAllVolunteerRegistrations}) => {
 
 console.log("allVolunteerRegistrations", allVolunteerRegistrations);
 /*
