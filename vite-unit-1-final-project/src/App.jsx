@@ -26,129 +26,7 @@ const App = () => {
     setAllVolunteerTasks(mockVolunteerTasks);
     /*setAllVolunteerRegistrations(mockVolunteerRegistrations);*/
   }, []);
-
-/*
-  const [registrations, setRegistrations] = useState([]);
-*/
-
-
-
-  const handleRegister = (data) => {
-
-    const eventFound = allVolunteerRegistrations.some((registration) => registration.eventId === data.eventId);
-    let sortedAllVolunteerRegistrations = [];
-
     
-    if (eventFound)
-    {
-      /* adding additional task for event you are already registered for */
-      
-      const updatedAllVolunteerRegistrations = allVolunteerRegistrations.map((event) => {
-      /* check if the current registered event is the one we need to update */
-        if (event.eventId === data.eventId)
-        {
-          return {
-            ...event, selectedTasks: [...event.selectedTasks, ...data.selectedTasks]
-          };
-        }
-        else
-        {
-          return event;
-        }
-      });
-    
-      sortedAllVolunteerRegistrations = 
-        [...updatedAllVolunteerRegistrations].sort((a, b) => a.eventId - b.eventId);
-    }
-    else
-    {
-      /* adding event for the first time and the selected tasks */
-      sortedAllVolunteerRegistrations = 
-        [...allVolunteerRegistrations, data].sort((a, b) => a.eventId - b.eventId);
-    }  
-
-    setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
-
-    console.log("here in App.jsx");
-  
-  };
-
-
-
-
-
-/* sample code to build from */
-//    const task = allVolunteerTasks.find((task) => task.taskId === taskId); /* either update the taskId's or try to add task.eventId === eventide && ... */
-//    return task ? task.description : taskId;  /* maybe the or should just return blank */
-
-/* refacted this */
-///    const task = allVolunteerRegistrations.find((registration) => registration.eventId === data.eventId);
-///    let allVolunteerRegistrationsOneRemoved = [];
-
-///    if (task)
-///   {
-///      allVolunteerRegistrationsOneRemoved = allVolunteerRegistrations.filter((registration) => registration.eventId !== task.eventId);
-
-///      task.selectedTasks = [...task.selectedTasks, ...data.selectedTasks];
-      
-     
-      
-      
-
-
-//      let volunteerRegistrations = allVolunteerRegistrations;
-      
-      
-
-//      data.forEach((newRegistration) => {
-        /* find and then filter out the event from allVolunteerRegistations */
-        
-
-//        volunteerRegistrations.forEach((registration) =>{
-//          registration.selectedTasks.forEach((eventId) => {
-//            eventTasks = [...eventId.SelectdTasks, data.]
-
-//          });
-
-//        });
-//      });  
-      
-
-/* refactored this */
-///      setAllVolunteerRegistrations([(prev) => [...allVolunteerRegistrationsOneRemoved, task]]);
-///    }
-///    else
-///    {
-///      setAllVolunteerRegistrations((prev) => [...prev, data]);
-///    }
-    
-   
-///  };
-
-
-
-
-//  const handleCancelTask = (registrationIndex, taskId) => {
-//    setRegistrations((prev) => {
-//      return prev.map((registration, idx) => {
-//        if (idx !== registrationIndex) return registration;
-        
-//        const updatedTasks = registration.selectedTasks.filter((id) => id !== taskId);
-
-//        if (updatedTasks.length === 0) return null;
-//        return {...registration, selectedTasks: updatedTasks};
-//      }).filter(Boolean);
- 
-//    });
-
-
-  //};
-
-//  const getTaskDescription = (taskId) => {
-//    const task = allVolunteerTasks.find((task) => task.taskId === taskId); /* either update the taskId's or try to add task.eventId === eventide && ... */
-//    return task ? task.description : taskId;  /* maybe the or should just return blank */
-//  };
-
 
 
 console.log("allVolunteerEvents", {allVolunteerEvents});
@@ -174,7 +52,7 @@ console.log("allVolunteerEvents", {allVolunteerEvents});
 
         <Route 
           path="/volunteerevents"
-          element={<VolunteerEventsPage volunteerEvents={allVolunteerEvents} />} 
+          element={<VolunteerEventsPage allVolunteerEvents={allVolunteerEvents} />} 
         /> 
       
         <Route 
@@ -189,9 +67,7 @@ console.log("allVolunteerEvents", {allVolunteerEvents});
       
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    
-    
-    
+      
     </div>
   );
 }

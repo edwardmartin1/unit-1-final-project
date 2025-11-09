@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react";
 import {Link} from "react-router";
 
 const HomePage = ({allVolunteerEvents, 
@@ -5,11 +6,33 @@ const HomePage = ({allVolunteerEvents,
                    allVolunteerRegistrations,
                    setAllVolunteerRegistrations}) => {
 
-console.log("allVolunteerRegistrations", allVolunteerRegistrations);
-/*
-  const event = allEvents.filter((event) => event.eventId === eventId)
-*/
+///const [sortedAllVolunteerRegistrations, setSortedAllVolunteerRegistrations] = useState([]);
 
+
+/* sort registrations when they change */
+///useEffect(() => {
+///  const sorted = [...allVolunteerRegistrations].sort(
+///        (a, b) => new Date(a.date) - new Date(b.date)
+///      );
+      
+///  setSortedAllVolunteerRegistrations(sorted);
+  //setAllVolunteerRegistrations(sorted);
+///}, [allVolunteerRegistrations]);
+
+
+///  console.log("allVolunteerRegistrations", allVolunteerRegistrations);
+  /*
+    const event = allEvents.filter((event) => event.eventId === eventId)
+  */
+
+  
+    // Sort the remaining events by date/time
+///    setSortedAllVolunteerRegistrations = [...allVolunteerRegistrations].sort(
+///        (a, b) => new Date(a.date) - new Date(b.date)
+//    );
+
+///    setSortedAllVolunteerRegistrations([...allVolunteerRegistrations].sort(
+///        (a, b) => new Date(a.date) - new Date(b.date)));
 
   const handleCancelTask = (registrationIndex, taskId) => {
     setAllVolunteerRegistrations((prev) => {
@@ -22,7 +45,10 @@ console.log("allVolunteerRegistrations", allVolunteerRegistrations);
         if (updatedTasks.length === 0) return null;
         return {...registration, selectedTasks: updatedTasks};
       }).filter(Boolean);
- 
+
+    //setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);  
+      
+    //setSortedAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
     });
 
 

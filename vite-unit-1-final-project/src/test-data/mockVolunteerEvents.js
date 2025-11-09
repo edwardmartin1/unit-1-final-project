@@ -70,5 +70,12 @@ export const mockVolunteerEvents =
         description: "Volunteer to help with this weeks meal.",
         criteria: "Volunteers of all ages welcome",
     },
+    {
+        eventId: 11,
+        date: "2023-02-09T16:00:00",
+        title: "2/9/2023 Community Meal",
+        description: "Volunteer to help with this weeks meal.",
+        criteria: "Volunteers of all ages welcome",
+    },
 ];
 
