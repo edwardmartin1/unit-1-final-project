@@ -3,7 +3,7 @@ const AboutPage = () => {
         <main>
             <div className="main-content">
                 <h1>About Bessie's Table</h1>
-                <h2>The Bessie's Table story:</h2>
+                <h2>The Bessie's Table story</h2>
                 <p>
                     In 2003, we heard the call and started Bessie's Table. It's a mission with one simple goal; to "Provide a hot home-cooked meal, in a welcoming setting, to persons and families in need, at no cost.”
                 </p>

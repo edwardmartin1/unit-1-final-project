@@ -12,20 +12,18 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
   console.log("got into VolunteerEventsRegistrationPage");
   console.log("eventId", eventId);
 
-
   const [eventWorkingOn, setEventWorkingOn] = useState(null);
   const [eventTasks, setEventTasks] = useState([]);  
   const [isRegistered, setIsRegistered] = useState(false);
   
-
   useEffect(() => {
-    console.log("VolunteerEventsRegistrationPage mounted");
+//    console.log("VolunteerEventsRegistrationPage mounted");
 
     const foundEvent = allVolunteerEvents.find((event) => 
       String(event.eventId) === eventId);
   
     setEventWorkingOn(foundEvent || []);
-    console.log("eventWorkingOn", eventWorkingOn);
+//    console.log("eventWorkingOn", eventWorkingOn);
 
   }, [eventId, allVolunteerEvents]);
 
@@ -47,24 +45,9 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     setEventTasks(filteredTasks);
   }, [eventId, allVolunteerTasks, allVolunteerRegistrations]);
 
-//  let eventTasks = [];
-//  eventTasks = allVolunteerTasks.filter((task) => String(task.eventId) === eventId)
-
-     
-//  allVolunteerRegistrations.forEach((registration) => {
-//    console.log("reg page - forEach registration");
-  
-//    registration.selectedTasks.forEach((taskId) => {
-//      eventTasks = eventTasks.filter((task) => task.taskId !== taskId)
-//    });
-
-//    console.log("eventTasks2", eventTasks);
-//  });
-  
 
 
-
-  console.log("finished looping through registrations");
+//  console.log("finished looping through registrations");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -90,7 +73,7 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     });
   };
 
-  /* look at checkboxes, if length zero then false, else true, name & email must be populated */
+  /* look at checkboxes, if length zero then false, else true. also, name & email must be populated */
   const isFormComplete = formData.selectedTasks.length && formData.name.trim() && formData.email.trim();
 
 
@@ -108,7 +91,7 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     };
 
     //console.log("registrationData", registrationData);
-    //onRegister(registrationData);
+    
     
     const eventFound = 
       allVolunteerRegistrations.some((registration) => 
@@ -148,11 +131,8 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
       /* adding event for the first time and the selected tasks, then sort the registrations */
       //updatedAllVolunteerRegistrations = [...allVolunteerRegistrations, registrationData];
 
-
       sortedAllVolunteerRegistrations = 
         [...allVolunteerRegistrations, registrationData].sort((a, b) => a.eventId - b.eventId);
-
-
 
       }  
 

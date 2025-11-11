@@ -1,58 +1,33 @@
 import {useState, useEffect} from "react";
 import {Link} from "react-router";
+import HomeCard from "./HomeCard";
+
 
 const HomePage = ({allVolunteerEvents, 
                    allVolunteerTasks,
                    allVolunteerRegistrations,
                    setAllVolunteerRegistrations}) => {
 
-///const [sortedAllVolunteerRegistrations, setSortedAllVolunteerRegistrations] = useState([]);
 
 
-/* sort registrations when they change */
-///useEffect(() => {
-///  const sorted = [...allVolunteerRegistrations].sort(
-///        (a, b) => new Date(a.date) - new Date(b.date)
-///      );
-      
-///  setSortedAllVolunteerRegistrations(sorted);
-  //setAllVolunteerRegistrations(sorted);
-///}, [allVolunteerRegistrations]);
-
-
-///  console.log("allVolunteerRegistrations", allVolunteerRegistrations);
-  /*
-    const event = allEvents.filter((event) => event.eventId === eventId)
-  */
-
-  
-    // Sort the remaining events by date/time
-///    setSortedAllVolunteerRegistrations = [...allVolunteerRegistrations].sort(
-///        (a, b) => new Date(a.date) - new Date(b.date)
-//    );
-
-///    setSortedAllVolunteerRegistrations([...allVolunteerRegistrations].sort(
-///        (a, b) => new Date(a.date) - new Date(b.date)));
-
-  const handleCancelTask = (registrationIndex, taskId) => {
-    setAllVolunteerRegistrations((prev) => {
-      return prev.map((registration, idx) => {
-        if (idx !== registrationIndex) return registration;
+/* moved below to HomeCard.jsx */ 
+//  const handleCancelTask = (registrationIndex, taskId) => {
+//    setAllVolunteerRegistrations((prev) => {
+//      return prev.map((registration, idx) => {
+//        if (idx !== registrationIndex) return registration;
         
-        const updatedTasks = registration.selectedTasks.filter((id) => id !== taskId);
+//        const updatedTasks = registration.selectedTasks.filter((id) => id !== taskId);
 
         /* if removing the final task for an event then remove the entire event */
-        if (updatedTasks.length === 0) return null;
-        return {...registration, selectedTasks: updatedTasks};
-      }).filter(Boolean);
+//        if (updatedTasks.length === 0) return null;
+//        return {...registration, selectedTasks: updatedTasks};
+//      }).filter(Boolean);
 
-    //setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);  
-      
-    //setSortedAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
-    });
+//    });
 
 
-  };
+//  };
+//moved above to HomeCard.jsx
 
   const getTaskDescription = (taskId) => {
     const task = allVolunteerTasks.find((task) => task.taskId === taskId); /* either update the taskId's or try to add task.eventId === eventide && ... */
@@ -70,15 +45,46 @@ const HomePage = ({allVolunteerEvents,
     return event ? event.title : eventId;
   };
 
+/* 11/10 update this code below */
+
+  let allVolunteerRegistrationsJSX = [...allVolunteerRegistrations].map((registration, idx) => {
     return (
-        <main>
-            <img
+      <HomeCard registration={registration} 
+                idx={idx} 
+                allVolunteerEvents={allVolunteerEvents} 
+                allVolunteerTasks={allVolunteerTasks} 
+                setAllVolunteerRegistrations={setAllVolunteerRegistrations}
+                />
+    );  });    
+        
+                
+                  
+
+//let allVolunteerEventsJSX = [...sortedEvents].map((event) => {
+//        return (
+//            <Link 
+//                to={"/volunteerevents/registration/" + event.eventId}
+//                key={event.eventId}>
+//                    <VolunteerEventCard /*key={event.eventId}*/ event={event} />
+//            </Link>
+        
+//        );
+//    });
+
+
+    return (
+      <div className="homepage-div">
+        
+      <img
+              className="homepage-img"
               src="/images/bt-home.jpg"
-              width="60%"
+              width="100%"
               
               alt="volunteer serving meal"
             />
-
+  
+        <main className="homepage-main">
+            
 
             <div className="main-content">
               <h1>Welcome to Bessie's Table</h1>
@@ -89,7 +95,7 @@ const HomePage = ({allVolunteerEvents,
               <p>Bessie’s Table provides an excellent opportunity to do both! Volunteering is simple. We need volunteers to assist with:</p>
               <p>View our <Link to="/volunteerevents">volunteer</Link> opportunities.</p>
               <p>Bessie’s Table serves dinner each Monday from 5:30pm until 6:30pm.  Dining room volunteers should arrive by 4:00 pm to set up. Clean-up is completed by 7:00 pm.</p>
-
+{/*
             <h2>Your Volunteer Registrations</h2>
             {allVolunteerRegistrations.length === 0 
                 ? 
@@ -101,13 +107,6 @@ const HomePage = ({allVolunteerEvents,
                     
                     allVolunteerRegistrations.map((registration, idx) => (
                         <div key={idx}> 
-{/*
-                            <p>Event:</p>
- 
-                            <p>{registration.eventId}</p>
-                            <p>{registration.name}</p>
-                            <p>{registration.email}</p>
-*/}
                             <p>{getEventDate(registration.eventId)} {" - "}
                             {getEventTitle(registration.eventId)}</p>
                             
@@ -128,36 +127,73 @@ const HomePage = ({allVolunteerEvents,
                     )      
                     )
                 )
-            } 
+            }
+*/}                 
             </div>
         </main>
-    );
 
-          
-
-
-{/*
-        {registrations.map((registration, idx) => (
-          <li key={idx}>
-            Event: {registration.eventId} Name: {registration.name} Email: {registration.email}
-            <br />
-            Tasks: {registrations.selectedTasks.join(, " || "None"}
-          </li>
-        ))}
-*/}
-{/*
-        </ul>
-
-      </div>  is this div needed 
-    ))} 
+        <aside class="homepage-sidebar">
+            <h2>Your Volunteer Registrations</h2>
 
 
-        </main>
-    );
-*/}
+
+
+
+            {allVolunteerRegistrations.length === 0 
+                ? 
+                (
+                    <p>You have no registrations.</p>
+                ) 
+                : 
+                (
+
+
+<div >{allVolunteerRegistrationsJSX}</div>
+
+
+
+
+                    
+                    )
+                
+            }
+
+
+
+        </aside>
+      </div>
+);
+
+
 
 
 };
 
 export default HomePage;
 
+/* code to put back
+                    
+                    allVolunteerRegistrations.map((registration, idx) => (
+                        <div key={idx}> 
+                            <p>{getEventDate(registration.eventId)} {" - "}
+                            {getEventTitle(registration.eventId)}</p>
+                            
+                            <ul className="homepage-ul">
+                                {registration.selectedTasks.map((taskId) => (
+                                  <article className="homepage-article">
+                                    <li key={taskId}>
+                                            
+                                        <button onClick={() => handleCancelTask(idx, taskId)}>
+                                          Cancel
+                                        </button>
+
+                                        {" "} {getTaskDescription(taskId)}
+                    
+                                    </li>
+                                  </article>  
+                                ))}
+                            </ul>
+                        </div> 
+                    )
+                    
+*/

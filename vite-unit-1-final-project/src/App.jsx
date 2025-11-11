@@ -38,21 +38,6 @@ const App = () => {
 
 console.log("allVolunteerEvents", {allVolunteerEvents});
 
-/* my old header -this can be deleted*/
-/*      return (
-      <header>
-      <h1>Unit 1 Final Project</h1>
-      </header>
-      );
-*/
-
-/*
-return (
-<div>
-  <h1>what a mess</h1>
-</div>
-)
-*/
 
 
   return (
