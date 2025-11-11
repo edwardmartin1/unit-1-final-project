@@ -72,14 +72,25 @@ const HomePage = ({allVolunteerEvents,
 
     return (
         <main>
+            <img
+              src="/images/bt-home.jpg"
+              width="60%"
+              
+              alt="volunteer serving meal"
+            />
+
+
             <div className="main-content">
-                <h1>Welcome to Bessies Table</h1>
-                <p>View our <Link to="/volunteerevents">volunteer</Link> opportunities.</p>
-            </div>
+              <h1>Welcome to Bessie's Table</h1>
+              
 
+              <h2>Every Monday at 5:30 p.m., we serve a delicious, home-cooked, healthy meal to anyone who comes to our door. Anyone.</h2>
+              <p>Do you enjoy helping and enriching the lives of others?</p>
+              <p>Bessie’s Table provides an excellent opportunity to do both! Volunteering is simple. We need volunteers to assist with:</p>
+              <p>View our <Link to="/volunteerevents">volunteer</Link> opportunities.</p>
+              <p>Bessie’s Table serves dinner each Monday from 5:30pm until 6:30pm.  Dining room volunteers should arrive by 4:00 pm to set up. Clean-up is completed by 7:00 pm.</p>
 
-
-            <h2>All Registrations</h2>
+            <h2>Your Volunteer Registrations</h2>
             {allVolunteerRegistrations.length === 0 
                 ? 
                 (
@@ -103,10 +114,13 @@ const HomePage = ({allVolunteerEvents,
                             <ul>
                                 {registration.selectedTasks.map((taskId) => (
                                     <li key={taskId}>
-                                        {getTaskDescription(taskId)}{" "}
+                                            
                                         <button onClick={() => handleCancelTask(idx, taskId)}>
-                                            Cancel
+                                          Cancel
                                         </button>
+
+                                        {" "} {getTaskDescription(taskId)}
+                    
                                  </li>
                                 ))}
                             </ul>
@@ -115,8 +129,7 @@ const HomePage = ({allVolunteerEvents,
                     )
                 )
             } 
-
-
+            </div>
         </main>
     );
 
