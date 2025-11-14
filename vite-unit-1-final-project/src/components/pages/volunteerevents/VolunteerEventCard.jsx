@@ -1,6 +1,8 @@
 import Card from "../../common/Card";
 
 const VolunteerEventCard = ({event}) => {
+
+    
 //console.log("VolunteerEventCard event", event);
     return (
         <Card clickable={true}>
@@ -10,7 +12,9 @@ const VolunteerEventCard = ({event}) => {
                 <h6>{event.description}</h6>
             </div>
             <div>
-                <div className="date">{event.date}</div>
+                {/*<div className="date">{event.date}</div>*/}  
+                <div>{event.getFormattedDate()}</div>
+                <div>{event.getFormattedTime()}</div>
             </div>
             <div className="criteria">
                 {event.criteria}

@@ -28,8 +28,9 @@ export default class VolunteerEvent
         let lang = "en-US";
         let options =
         {
-            hour: "2-digit",
-            minute: "2-digit",
+            hour: "numeric",
+            minute: "numeric",
+       
         }
 
         return new Date(this.date).toLocaleTimeString(lang, options);

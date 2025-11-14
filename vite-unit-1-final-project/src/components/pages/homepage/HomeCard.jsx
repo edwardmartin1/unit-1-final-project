@@ -33,7 +33,7 @@ const HomeCard = ({registration,
     const getEventDate = (eventId) => {
 //        console.log(eventId);
         const event = allVolunteerEvents.find((event) => event.eventId === eventId);
-        return event ? event.date : eventId;
+        return event ? event.getFormattedDate() : eventId;
     };
 
     const getEventTitle = (eventId) => {
@@ -50,9 +50,13 @@ and after the li
         <Card clickable={false} >
             <div className="home-card">    
                 <div key={idx}> 
-                   <p>{getEventDate(registration.eventId)} {" - "}
-                    {getEventTitle(registration.eventId)}</p>
-                            
+                   <h5>{getEventDate(registration.eventId)}</h5> {/*{" - "}*/}
+                   <h6>{getEventTitle(registration.eventId)}</h6>
+                   
+
+        {/*            <div>{registration.getFormattedDate()}</div>
+                <div>{registration.getFormattedTime()}</div>
+*/}
                     <ul className="homepage-ul">
                         {registration.selectedTasks.map((taskId) => (
                           

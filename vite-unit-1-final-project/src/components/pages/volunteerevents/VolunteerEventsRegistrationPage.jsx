@@ -1,8 +1,9 @@
 
 import {useState, useEffect} from "react";
-import {useParams, Link} from "react-router";
+import {useParams, useNavigate, Link} from "react-router";
 import Button from "../../common/Button";
 import ErrorPage from "../ErrorPage";
+import GoBack from '../../common/GoBack';
 
 const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
                                           allVolunteerTasks, 
@@ -155,6 +156,21 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     setIsRegistered(true);
   };
 
+  const navigate = useNavigate();
+
+  const handleGoToVolunteerEventsPage = () => {
+        navigate("/volunteerevents");
+  };
+
+
+/* dont need this anymore
+  const getEventDate = (eventId) => {
+/ /        console.log(eventId);
+        const event = allVolunteerEvents.find((event) => event.eventId === eventId);
+        return event ? event.getFormattedDate() : eventId;
+  };
+*/
+
 
 
   if (eventWorkingOn === null)
@@ -163,6 +179,7 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     return (
       <ErrorPage>
         <p>Sorry, that volunteer event does not exist!</p>
+         <GoBack text={'View All Volunteer Events'} handleClick={handleGoToVolunteerEventsPage} />
       </ErrorPage>
     )
     
@@ -174,7 +191,9 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
   return (
     <div>
       <div>
-          <Link to="/" className="back-link">Back to All Events</Link>
+{/*          <Link to="/" className="back-link">Back to All Events</Link>   */}
+          <GoBack text={'View All Volunteer Events'} handleClick={handleGoToVolunteerEventsPage} />
+
       </div>
     
       <div className="registration-form">
@@ -185,6 +204,10 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
               <fieldset>
             {/*<form onSubmit={handleSubmit}>*/}
               <h2>Register for Event: {eventWorkingOn ? eventWorkingOn.title : "Loading event..."}</h2>
+ {/*                  <h5>{getEventDate(eventWorkingOn.eventId)}</h5> */}   {/*{" - "}*/}
+                 
+                   <h5>{eventWorkingOn.getFormattedDate()}</h5>
+ {/*                  <h5>{getEventTime(eventWorkingOn.eventId)}</h5>  */}
 
               <div>
                 <label>
