@@ -1,7 +1,7 @@
 import Card from "../../common/Card";
 
 const VolunteerEventCard = ({event}) => {
-
+//console.log("VolunteerEventCard event", event);
     return (
         <Card clickable={true}>
         <div className="event-card">    

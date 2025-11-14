@@ -8,6 +8,7 @@
     margin: 0;
     gap: 0.5rem;    
 }
+
 .homepage-ul
 {
     list-style: none;
@@ -15,6 +16,7 @@
     
     
 }
+
 .homepage-main
 {
     grid-area: main;

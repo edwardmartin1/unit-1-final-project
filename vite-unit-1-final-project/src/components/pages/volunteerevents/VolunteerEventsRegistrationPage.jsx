@@ -1,16 +1,24 @@
 
 import {useState, useEffect} from "react";
 import {useParams, Link} from "react-router";
+import Button from "../../common/Button";
+import ErrorPage from "../ErrorPage";
 
 const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
                                           allVolunteerTasks, 
                                           allVolunteerRegistrations, 
                                           setAllVolunteerRegistrations}) => {
 
+    //console.log("VolunteerEventsRegistrationPage.jsx allVolunteerEvents", allVolunteerEvents);
+    //console.log("VolunteerEventsRegistrationPage.jsx allVolunteerTasks", allVolunteerTasks);
+
+
+
   const {eventId} = useParams();
     
-  console.log("got into VolunteerEventsRegistrationPage");
-  console.log("eventId", eventId);
+//  console.log("got into VolunteerEventsRegistrationPage");
+//  console.log("eventId", eventId);
+//console.log("after using eventId");
 
   const [eventWorkingOn, setEventWorkingOn] = useState(null);
   const [eventTasks, setEventTasks] = useState([]);  
@@ -22,8 +30,10 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     const foundEvent = allVolunteerEvents.find((event) => 
       String(event.eventId) === eventId);
   
-    setEventWorkingOn(foundEvent || []);
+    setEventWorkingOn(foundEvent || null);
 //    console.log("eventWorkingOn", eventWorkingOn);
+
+  
 
   }, [eventId, allVolunteerEvents]);
 
@@ -100,6 +110,7 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     let sortedAllVolunteerRegistrations = [];
 
     if (eventFound)
+      
     {
       /* adding additional task for event you are already registered for */
       
@@ -119,18 +130,13 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
       });
     
       /* sort the registrations */
-      //sortedAllVolunteerRegistrations =
-      //  [...updatedAllVolunteerRegistrations].sort((a, b) => a.eventId - b.eventId);
-
       sortedAllVolunteerRegistrations = 
         [...updatedAllVolunteerRegistrations].sort((a, b) => new Date(a.date) - new Date(b.date));
 
     }
     else
     {
-      /* adding event for the first time and the selected tasks, then sort the registrations */
-      //updatedAllVolunteerRegistrations = [...allVolunteerRegistrations, registrationData];
-
+      /* adding event for the first time and the selected tasks, then sort the registrations */      
       sortedAllVolunteerRegistrations = 
         [...allVolunteerRegistrations, registrationData].sort((a, b) => a.eventId - b.eventId);
 
@@ -151,8 +157,20 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
 
 
 
-  
+  if (eventWorkingOn === null)
+  {
+    console.log("VolunteerEventsRegistrationPage run ErrorPage");
+    return (
+      <ErrorPage>
+        <p>Sorry, that volunteer event does not exist!</p>
+      </ErrorPage>
+    )
+    
+  }
+  else
+  {
 
+  
   return (
     <div>
       <div>
@@ -163,8 +181,9 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
         {isRegistered 
           ? (<h3>Registration complete.</h3>)
           :(
-
-            <form onSubmit={handleSubmit}>
+            <form>
+              <fieldset>
+            {/*<form onSubmit={handleSubmit}>*/}
               <h2>Register for Event: {eventWorkingOn ? eventWorkingOn.title : "Loading event..."}</h2>
 
               <div>
@@ -216,18 +235,32 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
                 )
               }         
 
+
+              <Button
+                id={`submit-event-${eventId}`}
+                type="submit"
+                label="Register"
+                classes={isFormComplete ? "btn-enabled" : "btn-disabled"}
+                handleClick={handleSubmit}
+                disabled={!isFormComplete}
+              />
+{/* 
               <button 
                 type="submit"
                   disabled={!isFormComplete}
                   className={isFormComplete ? "btn-enabled" : "btn-disabled"}>
                   Submit
+
               </button>   
+*/}  
+              </fieldset>
             </form>
           )}
 
       </div>
     </div>      
   );
+  }
 };
 
 export default VolunteerEventsRegistrationPage;

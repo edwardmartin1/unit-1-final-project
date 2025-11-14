@@ -1,5 +1,47 @@
 
 
+input[type="text"],
+input[type="email"]
+{    
+  font-size: 120%;
+  color: #5a5854;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 5px 5px 5px 30px;
+  /*background-repeat: no-repeat;*/
+  /*background-position: 8px 9px;*/
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input#email 
+{
+  background-image: url("../../public/images/email.png");
+}
+
+
+input:focus, input:hover 
+{
+  background-color: #ffffff;
+  border: 1px solid #b1e1e4;
+}
+
+
+
+fieldset 
+{
+  margin: auto;
+  width: 95%;  
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;  
+  padding: 20px;
+  text-align: left;
+}
+
+
 /* Button states */
 .btn-enabled
 {
