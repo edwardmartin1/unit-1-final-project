@@ -25,15 +25,16 @@
 .homepage-sidebar
 {
     grid-area: sidebar;
-    background: #D3D4D7;
+ /*   background: #D3D4D7; */
 }
 
 .homepage-img
 {
     grid-area: img;
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     object-fit: cover;
+    /* object-fit: contain; */
 }
 /*
 .homepage-article
@@ -53,3 +54,4 @@
 
     }    
 }
+

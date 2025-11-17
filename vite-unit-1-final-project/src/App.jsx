@@ -16,9 +16,13 @@ import VolunteerEventsRegistrationPage
 import {mockVolunteerEvents} from "./test-data/mockVolunteerEvents.js";
 import {mockVolunteerTasks} from "./test-data/mockVolunteerTasks.js";
 import {mockVolunteerRegistrations} from "./test-data/mockVolunteerRegistrations.js";
-import AboutPage from "./components/pages/AboutPage.jsx";
+import AboutPage from "./components/pages/aboutpage/AboutPage.jsx";
+import ContactPage from "./components/pages/contactpage/ContactPage.jsx";
+
 import VolunteerEvent from "./classes/VolunteerEvent";
 import VolunteerTask from "./classes/VolunteerTask";
+/*import background from "./assets/jean-philippe-delberghe-75xPHEQBmvA-unsplash-background.jpg";
+*/
 
 console.log("got here in App.jsx");
 console.log("mockVolunteerEvents", mockVolunteerEvents);
@@ -102,10 +106,17 @@ const App = () => {
 
 
 
+/*
+    <div id="root-container"
+         style={{ "--bg-img": `url(${background})` }}>
+ 
+*/
 
   return (
     
-    <div id="body-container">
+
+    <div id="body-container" className="app-container">
+
       <Header />      
 
 
@@ -138,6 +149,11 @@ const App = () => {
         <Route 
           path="/about"
           element={<AboutPage />} />
+
+        <Route 
+          path="/contact"
+          element={<ContactPage />} />
+
 
         <Route path="*" element={<Navigate to="/" />} />
       

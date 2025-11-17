@@ -1,5 +1,40 @@
 
 
+.registration-div
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "img img img"
+        "main main sidebar";
+    margin: 0;
+    gap: 0.5rem;    
+}
+
+
+.registration-main
+{
+    grid-area: main;
+}
+
+.registration-sidebar
+{
+    grid-area: sidebar;
+    /* background: #D3D4D7; */
+}
+
+@media only screen and (max-width: 550px) {
+    .registration-div {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "img"
+            "main"
+            "sidebar"
+
+    }    
+}
+
+
 input[type="text"],
 input[type="email"]
 {    
@@ -10,7 +45,7 @@ input[type="email"]
   border-radius: 5px;
   padding: 5px 5px 5px 30px;
   background-repeat: no-repeat;
-  background-position: 8px 9px;
+  background-position: 8px center;
   display: block;
   margin-bottom: 10px;
   width: 100%;
@@ -19,7 +54,10 @@ input[type="email"]
 
 input[type=email] 
 {
-  background-image: url("../../../../public/images/email.png");
+/*  background-image: url("images/email.png");
+*/
+
+background-image: url("../../../assets/email.png");
 
 /*  src="/images/bt-home.jpg"  */
 }

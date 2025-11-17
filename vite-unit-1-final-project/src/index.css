@@ -5,5 +5,7 @@
 @import url("./components/pages/volunteerevents/volunteerevents.css");
 
 @import url("./components/pages/homepage/homepage.css");
+@import url("./components/pages/aboutpage/aboutpage.css");
+@import url("./components/pages/contactpage/contactpage.css");
 
 @import url("./components/layout/layout.css");

@@ -1,5 +1,10 @@
+/* import aboutImg from "../../../assets/doina-gavrilov-FvdoYvSEaCI-unsplash-about.jpg"; */
+
+import aboutImg from "../../../assets/keesha-s-kitchen-gDwy_JEoz8k-unsplash-about.jpg";
+
 const AboutPage = () => {
     return (
+        <div>
         <main>
             <div className="main-content">
                 <h1>About Bessie's Table</h1>
@@ -14,13 +19,21 @@ const AboutPage = () => {
                     It's a challenge when there aren't enough donations. When the donations are not enough, we have to purchase whatever is needed. One night's meal can cost about $150.00. Unbelievably, our expert volunteers can stretch that $150 budget to enough food to make a nutritous meal that feeds the entire group.
                 </p>
                 <p>
-                    Is your your organization, school, or church looking for a community partnership program? What better way then to partner with Bessie’s Table, and have your $150.00 partner donation help so many individuals here, in our home community. With your gift, you'll get a certificate to proudly display in your office or headquarters, recognizing you as a partner.
+                    Is your organization, school, or church looking for a community partnership program? What better way than to partner with Bessie’s Table, and have your $150.00 partner donation help so many individuals here, in our home community. With your gift, you'll get a certificate to proudly display in your office or headquarters, recognizing you as a partner.
                 </p>
             </div>
         </main>
+
+        <img
+            className="aboutpage-img"
+            /*src="assets/bt-home.jpg"*/
+            src={aboutImg}
+            /*width="100%"*/
+            alt="fresh soup"
+        />
+        </div>  
     )
 
 }
 
 export default AboutPage;
-
