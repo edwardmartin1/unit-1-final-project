@@ -6,13 +6,13 @@ import ErrorPage from "../ErrorPage";
 import GoBack from '../../common/GoBack';
 import InputErrorMessage from '../../common/InputErrorMessage';
 
-/*
+
 let errorMessages = {
     nameRequired: 'Name is required.',
     emailRequired: 'Email is required.',
     taskRequired: 'At least 1 task required.',
 };
-*/
+
 
 const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
                                           allVolunteerTasks, 
@@ -225,6 +225,11 @@ const eventWorkingOn = allVolunteerEvents.find(
 
 console.log("VEG eventTasks", eventTasks.length);
 
+
+const hasCheckboxes = eventTasks.length > 0;
+
+
+
  if (eventWorkingOn === null)
   {
  //   console.log("VolunteerEventsRegistrationPage run ErrorPage");
@@ -282,12 +287,12 @@ console.log("VEG eventTasks", eventTasks.length);
                     required={true}
                   />
                 </label>
-{/*
+
                 <InputErrorMessage
                   hasError={hasErrors && formData.name.trim() === ""}
                   msg={errorMessages["nameRequired"]}
                 />
-*/}
+
           
 
               <div>
@@ -302,12 +307,12 @@ console.log("VEG eventTasks", eventTasks.length);
                   />
 
                 </label>
-{/*
+
                 <InputErrorMessage
                   hasError={hasErrors && formData.email.trim() === ""}
                   msg={errorMessages["emailRequired"]}
                 />
-*/}
+
 
               </div>
 
@@ -329,12 +334,12 @@ console.log("VEG eventTasks", eventTasks.length);
                         </label>
                       </div>
                     ))}
-{/*
+
                     <InputErrorMessage
                       hasError={hasErrors && formData.selectedTasks.length === 0}
                       msg={errorMessages["taskRequired"]}
                     />
-*/}
+
                   </div>
                   
 
@@ -350,9 +355,13 @@ console.log("VEG eventTasks", eventTasks.length);
                 type="submit"
                 label="Register"
                 handleClick={handleSubmit}
-                classes={isFormComplete ? "btn-enabled" : "btn-disabled"}
-                disabled={ !isFormComplete}                   
+                classes={hasCheckboxes ? "btn-enabled" : "btn-disabled"}
+                
+                disabled={!hasCheckboxes}                   
               />
+              {/*classes={isFormComplete ? "btn-enabled" : "btn-disabled"}*/}
+              {/*disabled={!isFormComplete}*/}
+
               </fieldset>
             </form>
           )}

@@ -3,6 +3,10 @@ import {Link} from "react-router";
 import HomeCard from "./HomeCard";
 /*import homeImg from "../../../assets/bt-home-2.jpg";*/
 import homeImg from "../../../assets/farhad-ibrahimzade-n02DKJ1fiK0-unsplash-hero-large.jpg";
+import flipCardFront from "../../../assets/doina-gavrilov-FvdoYvSEaCI-unsplash-flip.jpg";
+/*import flipCardBack from "../../../assets/doina-gavrilov-FvdoYvSEaCI-unsplash-flip.jpg";*/
+import flipCardBack from "../../../assets/kevin-kevin-w5CB081l1V4-unsplash-flip.jpg";
+
 
 const HomePage = ({allVolunteerEvents, 
                    allVolunteerTasks,
@@ -69,6 +73,34 @@ const HomePage = ({allVolunteerEvents,
           <p>Bessie’s Table serves dinner each Monday from 5:30 p.m. until 6:30 p.m.  Dining room volunteers should arrive by 4:00 p.m. to set up. Clean up is completed by 7:00 p.m.</p>
 
         </div>
+
+
+        <div className="flip-card">
+          <div className="card-inner">
+            <div className="card-front">	
+	            <img
+                className="flip-img"
+                src={flipCardFront}              
+                alt="vegetables on a table"
+              />
+			       
+	            <h6 className="card-title">Free Healthy Meal Every Monday</h6>		
+	
+            </div>
+    
+            <div className="card-back">
+		          <img
+			          className="flip-img"
+                src={flipCardBack}                          
+                alt="volunteer baking desserts"
+              />      
+              
+              <h6 className="card-title">Volunteer With Us</h6>
+            </div>
+          </div>  
+        </div>
+
+
       </main>
 
       <aside className="homepage-sidebar">

@@ -29,7 +29,7 @@ const AboutPage = () => {
             /*src="assets/bt-home.jpg"*/
             src={aboutImg}
             /*width="100%"*/
-            alt="fresh soup"
+            alt="soup in a bowl"
         />
         </div>  
     )

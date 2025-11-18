@@ -17,9 +17,9 @@ const ContactPage = () => {
                     width="600" 
                     height="450" 
                   /*  style="border:0;" */
-                    allowfullscreen=""  
+                    allowFullScreen=""  
                     loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    referrerPolicy="no-referrer-when-downgrade">
 
                 </iframe>
 
@@ -36,7 +36,7 @@ const ContactPage = () => {
             
             src={contactImg}
             
-            alt="fresh soup"
+            alt="salad on a plate"
         />
         </div>  
     )

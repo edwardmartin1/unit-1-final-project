@@ -21,8 +21,7 @@ import ContactPage from "./components/pages/contactpage/ContactPage.jsx";
 
 import VolunteerEvent from "./classes/VolunteerEvent";
 import VolunteerTask from "./classes/VolunteerTask";
-/*import background from "./assets/jean-philippe-delberghe-75xPHEQBmvA-unsplash-background.jpg";
-*/
+
 
 console.log("got here in App.jsx");
 console.log("mockVolunteerEvents", mockVolunteerEvents);
