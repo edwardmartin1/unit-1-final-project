@@ -1,3 +1,30 @@
+.error {
+    color: #b03a2e;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+button {
+    color: white;
+    background-color: #1e323c;
+    background-color: #4a90e2;
+    font-family: 'Assistant', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 5px;
+    outline: none;
+    border: 2px solid #1e323c;
+    border: 2px solid #4a90e2;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover 
+{
+  color: #4a90e2;
+  background-color: white;
+}
+
 .card {
     display: inline-block;
     vertical-align: top;

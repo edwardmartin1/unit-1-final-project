@@ -1,5 +1,87 @@
 
 
+.registration-div
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "img img img"
+        "main main sidebar";
+    margin: 0;
+    gap: 0.5rem;    
+}
+
+
+.registration-main
+{
+    grid-area: main;
+}
+
+.registration-sidebar
+{
+    grid-area: sidebar;
+    /* background: #D3D4D7; */
+}
+
+@media only screen and (max-width: 550px) {
+    .registration-div {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "img"
+            "main"
+            "sidebar"
+
+    }    
+}
+
+
+input[type="text"],
+input[type="email"]
+{    
+  font-size: 120%;
+  color: #5a5854;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 5px 5px 5px 30px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type=email] 
+{
+/*  background-image: url("images/email.png");
+*/
+
+background-image: url("../../../assets/email.png");
+
+/*  src="/images/bt-home.jpg"  */
+}
+
+
+input:focus, input:hover 
+{
+  background-color: #ffffff;
+  border: 1px solid #b1e1e4;
+}
+
+
+
+fieldset 
+{
+  margin: auto;
+  width: 95%;  
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;  
+  padding: 20px;
+  text-align: left;
+}
+
+
 /* Button states */
 .btn-enabled
 {

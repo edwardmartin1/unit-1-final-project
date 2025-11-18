@@ -3,6 +3,10 @@ import VolunteerEventCard from "./VolunteerEventCard.jsx";
 
 const VolunteerEventsPage = ({allVolunteerEvents}) => {
 
+
+
+
+
     /* get the current system date and time */    
     const now = new Date();
 
@@ -17,17 +21,19 @@ const VolunteerEventsPage = ({allVolunteerEvents}) => {
     );
 
     //console.log("allVolunteerevents", allVolunteerEvents);
+//console.log("VolunteerEventsPage sortedEvents", sortedEvents);
 
-    let allVolunteerEventsJSX = [...sortedEvents].map((event) => {
+    let allVolunteerEventsJSX = [...sortedEvents].map((event, index) => {
         return (
             <Link 
-                to={"/volunteerevents/registration/" + event.eventId}
-                key={event.eventId}>
+                to={"/volunteerevents/registration/" + event.eventId} 
+                key={event.eventId ?? index}>
                     <VolunteerEventCard /*key={event.eventId}*/ event={event} />
             </Link>
         
         );
     });
+//console.log("VolunteerEventsPage allVolunteerEventsJSX", allVolunteerEventsJSX);
 
     return (
         <main className="main-content">

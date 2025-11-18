@@ -1,4 +1,6 @@
-import Card from "../common/Card";
+import Card from "../../common/Card";
+import Button from '../../common/Button';
+
 
 const HomeCard = ({registration, 
                     idx, 
@@ -29,9 +31,9 @@ const HomeCard = ({registration,
     };
 
     const getEventDate = (eventId) => {
-        console.log(eventId);
+//        console.log(eventId);
         const event = allVolunteerEvents.find((event) => event.eventId === eventId);
-        return event ? event.date : eventId;
+        return event ? event.getFormattedDate() : eventId;
     };
 
     const getEventTitle = (eventId) => {
@@ -39,26 +41,47 @@ const HomeCard = ({registration,
         return event ? event.title : eventId;
     };
 
+/*remove from before the li
+<article className="homepage-article" key={taskId}> 
+and after the li
+</article>*/
 
     return (
         <Card clickable={false} >
             <div className="home-card">    
                 <div key={idx}> 
-                   <p>{getEventDate(registration.eventId)} {" - "}
-                    {getEventTitle(registration.eventId)}</p>
-                            
+                   <h5>{getEventDate(registration.eventId)}</h5> {/*{" - "}*/}
+                   <h6>{getEventTitle(registration.eventId)}</h6>
+                   
+
+        {/*            <div>{registration.getFormattedDate()}</div>
+                <div>{registration.getFormattedTime()}</div>
+*/}
                     <ul className="homepage-ul">
                         {registration.selectedTasks.map((taskId) => (
-                            <article className="homepage-article">
-                                <li key={taskId}>                                            
+                          
+                                <li key={taskId}   >                                            
+
+
+                                    <Button
+                                        id={`button-event-${idx}`}
+                                            
+                                        
+                                        type="button"
+                                        label="Cancel"
+                                        classes=""
+                                        handleClick={() => handleCancelTask(idx, taskId)}
+                                        disabled={false}
+                                    />
+{/*
                                     <button onClick={() => handleCancelTask(idx, taskId)}>
                                         Cancel
                                     </button>
-
+*/}
                                     {" "} {getTaskDescription(taskId)} 
                     
                                 </li>
-                            </article>  
+                               
                         ))}
                     </ul>
                 </div>             
@@ -70,3 +93,5 @@ const HomeCard = ({registration,
 };
 
 export default HomeCard;
+
+
