@@ -64,14 +64,6 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
 
 
 
-
-  
-  
-
-
-
-
-
   /* find the available tasks */
   useEffect(() => {
     if (!eventId || !allVolunteerTasks) return;
@@ -214,13 +206,6 @@ const eventWorkingOn = allVolunteerEvents.find(
       }  
       
   };
-/****
-   const navigate = useNavigate();
-
-  const handleGoToVolunteerEventsPage = () => {
-        navigate("/volunteerevents");
-  };
-***/
 
 
 console.log("VEG eventTasks", eventTasks.length);
