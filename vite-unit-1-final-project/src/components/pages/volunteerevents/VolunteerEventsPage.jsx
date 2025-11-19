@@ -1,55 +1,47 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
 import VolunteerEventCard from "./VolunteerEventCard.jsx";
 
-const VolunteerEventsPage = ({allVolunteerEvents}) => {
+const VolunteerEventsPage = ({ allVolunteerEvents }) => {
+  /* get the current system date and time */
+  const now = new Date();
 
+  // Filter to only show future events (date > now)
+  const upcomingEvents = allVolunteerEvents.filter(
+    (event) => new Date(event.date) > now
+  );
 
+  // Sort the remaining events by date/time
+  const sortedEvents = [...upcomingEvents].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
 
+  //console.log("allVolunteerevents", allVolunteerEvents);
+  //console.log("VolunteerEventsPage sortedEvents", sortedEvents);
 
-
-    /* get the current system date and time */    
-    const now = new Date();
-
-    // Filter to only show future events (date > now)
-    const upcomingEvents = allVolunteerEvents.filter(
-        (event) => new Date(event.date) > now
-    );
-
-    // Sort the remaining events by date/time
-    const sortedEvents = [...upcomingEvents].sort(
-        (a, b) => new Date(a.date) - new Date(b.date)
-    );
-
-    //console.log("allVolunteerevents", allVolunteerEvents);
-//console.log("VolunteerEventsPage sortedEvents", sortedEvents);
-
-    let allVolunteerEventsJSX = [...sortedEvents].map((event, index) => {
-        return (
-            <Link 
-                to={"/volunteerevents/registration/" + event.eventId} 
-                key={event.eventId ?? index}>
-                    <VolunteerEventCard /*key={event.eventId}*/ event={event} />
-            </Link>
-        
-        );
-    });
-//console.log("VolunteerEventsPage allVolunteerEventsJSX", allVolunteerEventsJSX);
-
+  let allVolunteerEventsJSX = [...sortedEvents].map((event, index) => {
     return (
-        <main className="main-content">
-            <h1>Volunteer Events</h1>
-            {sortedEvents.length ? (
-                <div className="event-card-container">{allVolunteerEventsJSX}</div>
-            ) : (
-                <p>
-                    <em>There are no volunteer events to display.</em>
-                </p>
-            )}
-        </main>
+      <Link
+        to={"/volunteerevents/registration/" + event.eventId}
+        key={event.eventId ?? index}
+      >
+        <VolunteerEventCard /*key={event.eventId}*/ event={event} />
+      </Link>
     );
+  });
+  //console.log("VolunteerEventsPage allVolunteerEventsJSX", allVolunteerEventsJSX);
 
-
+  return (
+    <main className="main-content">
+      <h1>Volunteer Events</h1>
+      {sortedEvents.length ? (
+        <div className="event-card-container">{allVolunteerEventsJSX}</div>
+      ) : (
+        <p>
+          <em>There are no volunteer events to display.</em>
+        </p>
+      )}
+    </main>
+  );
 };
 
 export default VolunteerEventsPage;
-
