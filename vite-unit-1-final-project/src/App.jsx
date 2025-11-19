@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {Routes, Route, Navigate} from "react-router";
 //import './App.css'
-console.log("got here in App.jsx");
+//console.log("got here in App.jsx");
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -15,7 +15,7 @@ import VolunteerEventsRegistrationPage
 
 import {mockVolunteerEvents} from "./test-data/mockVolunteerEvents.js";
 import {mockVolunteerTasks} from "./test-data/mockVolunteerTasks.js";
-import {mockVolunteerRegistrations} from "./test-data/mockVolunteerRegistrations.js";
+//import {mockVolunteerRegistrations} from "./test-data/mockVolunteerRegistrations.js";
 import AboutPage from "./components/pages/aboutpage/AboutPage.jsx";
 import ContactPage from "./components/pages/contactpage/ContactPage.jsx";
 
