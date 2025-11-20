@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import HomeCard from "./HomeCard";
-/*import homeImg from "../../../assets/bt-home-2.jpg";*/
 import homeImg from "../../../assets/farhad-ibrahimzade-n02DKJ1fiK0-unsplash-hero-large.jpg";
 import flipCardFront from "../../../assets/doina-gavrilov-FvdoYvSEaCI-unsplash-flip.jpg";
-/*import flipCardBack from "../../../assets/doina-gavrilov-FvdoYvSEaCI-unsplash-flip.jpg";*/
 import flipCardBack from "../../../assets/kevin-kevin-w5CB081l1V4-unsplash-flip.jpg";
 
 const HomePage = ({
@@ -32,9 +30,7 @@ const HomePage = ({
     <div className="homepage-div">
       <img
         className="homepage-img"
-        /*src="assets/bt-home.jpg"*/
         src={homeImg}
-        /*width="100%"*/
         alt="volunteer serving meal"
       />
 

@@ -27,16 +27,11 @@ const HomeCard = ({
   };
 
   const getTaskDescription = (taskId) => {
-    const task = allVolunteerTasks.find(
-      (task) => task.taskId === taskId
-    ); /* either update the taskId's or try to add task.eventId === eventide && ... */
-    return task
-      ? task.description
-      : taskId; /* maybe the or should just return blank */
+    const task = allVolunteerTasks.find((task) => task.taskId === taskId);
+    return task ? task.description : taskId;
   };
 
   const getEventDate = (eventId) => {
-    //        console.log(eventId);
     const event = allVolunteerEvents.find((event) => event.eventId === eventId);
     return event ? event.getFormattedDate() : eventId;
   };
@@ -56,7 +51,7 @@ const HomeCard = ({
             {registration.selectedTasks.map((taskId) => (
               <li key={taskId}>
                 <Button
-                  id={`button-event-${idx}`}
+                  id={`cancel-event-${idx}`}
                   type="button"
                   label="Cancel"
                   classes=""

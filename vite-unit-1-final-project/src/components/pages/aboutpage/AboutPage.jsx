@@ -36,13 +36,7 @@ const AboutPage = () => {
         </div>
       </main>
 
-      <img
-        className="aboutpage-img"
-        /*src="assets/bt-home.jpg"*/
-        src={aboutImg}
-        /*width="100%"*/
-        alt="soup in a bowl"
-      />
+      <img className="aboutpage-img" src={aboutImg} alt="soup in a bowl" />
     </div>
   );
 };

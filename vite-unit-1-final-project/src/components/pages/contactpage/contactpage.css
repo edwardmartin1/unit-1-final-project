@@ -2,8 +2,5 @@
   grid-area: img;
   width: 100%;
   height: 50vh;
-
-  /*height: auto; */
   object-fit: cover;
-  /* object-fit: contain; */
 }

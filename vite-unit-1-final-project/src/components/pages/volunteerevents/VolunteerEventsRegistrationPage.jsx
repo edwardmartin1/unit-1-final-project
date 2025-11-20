@@ -17,16 +17,8 @@ const VolunteerEventsRegistrationPage = ({
   allVolunteerRegistrations,
   setAllVolunteerRegistrations,
 }) => {
-  //console.log("VolunteerEventsRegistrationPage.jsx allVolunteerEvents", allVolunteerEvents);
-  //console.log("VolunteerEventsRegistrationPage.jsx allVolunteerTasks", allVolunteerTasks);
-
   const { eventId } = useParams();
 
-  //  console.log("got into VolunteerEventsRegistrationPage");
-  //  console.log("eventId", eventId);
-  //console.log("after using eventId");
-
-  //  const [eventWorkingOn, setEventWorkingOn] = useState(null);
   const [eventTasks, setEventTasks] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
@@ -36,20 +28,6 @@ const VolunteerEventsRegistrationPage = ({
     email: "",
     selectedTasks: [],
   });
-
-  /* find the event */
-  //  useEffect(() => {
-  //    console.log("VolunteerEventsRegistrationPage mounted");
-
-  //    const foundEvent = allVolunteerEvents.find((event) =>
-  //      String(event.eventId) === eventId);
-
-  //    if (foundEvent !== eventWorkingOn) {
-  //      setEventWorkingOn(foundEvent || null);
-  //    }
-  //    console.log("eventWorkingOn", eventWorkingOn);
-
-  //  }, [eventId, allVolunteerEvents, eventWorkingOn]);
 
   const navigate = useNavigate();
 
@@ -80,8 +58,6 @@ const VolunteerEventsRegistrationPage = ({
     allVolunteerEvents.find((event) => String(event.eventId) === eventId) ||
     null;
 
-  //  console.log("finished looping through registrations");
-
   /* update the stateful variable formData */
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -101,8 +77,6 @@ const VolunteerEventsRegistrationPage = ({
 
   /* look at checkboxes, if length zero then false, else true. also, name & email must be populated */
   const isFormComplete =
-    // console.log("VolunteerEventsRegistrationPage formData.selectedTasks.length", formData.selectedTasks.length);
-
     formData.selectedTasks.length > 0 &&
     formData.name.trim() != "" &&
     formData.email.trim() != "";
@@ -130,8 +104,6 @@ const VolunteerEventsRegistrationPage = ({
         selectedTasks: formData.selectedTasks,
       };
 
-      //console.log("registrationData", registrationData);
-
       const alreadyRegistered = allVolunteerRegistrations.some(
         (registration) => registration.eventId === registrationData.eventId
       );
@@ -153,7 +125,7 @@ const VolunteerEventsRegistrationPage = ({
                 ],
               };
             } else {
-            /* save the other registereed events as is */
+              /* save the other registereed events as is */
               return event;
             }
           }
@@ -184,12 +156,9 @@ const VolunteerEventsRegistrationPage = ({
     }
   };
 
-  //console.log("VEG eventTasks", eventTasks.length);
-
   const hasCheckboxes = eventTasks.length > 0;
 
   if (eventWorkingOn === null) {
-    //   console.log("VolunteerEventsRegistrationPage run ErrorPage");
     return (
       <ErrorPage>
         <p>Sorry, that volunteer event does not exist!</p>
@@ -263,6 +232,7 @@ const VolunteerEventsRegistrationPage = ({
                         <label>
                           <input
                             type="checkbox"
+                            name="selectedTasks"
                             checked={formData.selectedTasks.includes(
                               task.taskId
                             )}
