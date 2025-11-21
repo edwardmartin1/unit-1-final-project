@@ -22,7 +22,18 @@ html {
 body {
   background-color: white;
   color: #1e323c;
+  color: #29536a;
+  color: #1f4250;
   font-family: "Assistant", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -88,6 +99,7 @@ footer {
   flex-direction: column;
   align-items: center;
   background-color: #1e323c;
+  background-color: #29536a;
   color: white;
   width: 100%;
   padding: 15px clamp(20px, 4vw, 30px) 20px;
@@ -110,6 +122,7 @@ h2,
 h3,
 h4 {
   font-family: "Kodchasan", sans-serif;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
 
@@ -120,16 +133,24 @@ h5,
 h6 {
   margin: 12px 0 0;
 }
-
+/*
+p {
+  color: #1f4250;
+}
+*/
 h1 {
   color: #c66311;
+  color: #e8751a;
   font-size: 1.4rem;
   font-weight: 700;
 }
 
 h2 {
   color: white;
+  color: #0f1b22;
+  color: #1e1e1e;
   background-color: #c66311;
+  background-color: #e8751a;
 
   font-size: 1.1rem;
   font-weight: 200;
@@ -142,23 +163,29 @@ h2 {
 
 h3 {
   color: #1e323c;
+  color: #29536a;
+  color: #1f4250;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 h4 {
   color: #c66311;
+  color: #e8751a;
   font-size: 1.1rem;
 }
 
 h5 {
   color: #c66311;
+  color: #e8751a;
   font-weight: 700;
   font-size: 1.1rem;
 }
 
 h6 {
   color: #1e323c;
+  color: #29536a;
+  color: #1f4250;
   font-weight: 600;
   font-size: 1rem;
 }
@@ -170,6 +197,7 @@ p {
 a,
 .link-like {
   color: #c66311;
+  color: #e8751a;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
@@ -178,6 +206,7 @@ a,
 a:hover,
 a:active {
   color: #b95a0a;
+  color: #cc5f00;
 }
 
 iframe {
@@ -185,6 +214,7 @@ iframe {
   width: calc(100% - 4px); /* subtract border */
   margin: 20px 0;
   border: 2px solid #1e323c;
+  border: 2px solid #1f4250;
 }
 
 /** MEDIA QUERIES **/

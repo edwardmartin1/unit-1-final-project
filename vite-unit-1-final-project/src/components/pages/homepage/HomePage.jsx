@@ -46,7 +46,7 @@ const HomePage = ({
           <p>Do you enjoy helping and enriching the lives of others?</p>
           <p>
             Bessie’s Table provides an excellent opportunity to do both!
-            Volunteering is simple. We need volunteers to assist with:
+            Registering to volunteer is simple.
           </p>
           <p>
             View our <Link to="/volunteerevents">volunteer</Link> opportunities.
@@ -67,7 +67,7 @@ const HomePage = ({
                 alt="vegetables on a table"
               />
 
-              <h6 className="card-title">Free Healthy Meal Every Monday</h6>
+              <p className="card-title">Free Healthy Meal Every Monday</p>
             </div>
 
             <div className="card-back">
@@ -77,7 +77,7 @@ const HomePage = ({
                 alt="volunteer baking desserts"
               />
 
-              <h6 className="card-title">Volunteer With Us</h6>
+              <p className="card-title">Volunteer With Us</p>
             </div>
           </div>
         </div>

@@ -95,14 +95,15 @@
 
   background-color: #e6f7ff;
   color: #083442;
+  color: #1f4250;
 }
 
 .card-back {
   background-color: #c7eaff;
   color: #1e323c;
-  transform: rotateY(180deg);
   background-color: #34b5ff;
   color: white;
+  transform: rotateY(180deg);
 }
 
 .flip-img {

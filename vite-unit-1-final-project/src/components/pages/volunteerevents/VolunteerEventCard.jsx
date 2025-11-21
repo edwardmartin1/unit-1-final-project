@@ -7,14 +7,21 @@ const VolunteerEventCard = ({ event }) => {
       <div className="event-card">
         <div>
           <h5>{event.title}</h5>
-          <h6>{event.description}</h6>
+          <p>{event.description}</p>
+          {/*
         </div>
+        */}{" "}
+          {/*
         <div>
+          */}
           {/*<div className="date">{event.date}</div>*/}
-          <div>{event.getFormattedDate()}</div>
-          <div>{event.getFormattedTime()}</div>
+          <p>{event.getFormattedDate()}</p>
+          <p>{event.getFormattedTime()}</p>
+          {/*
         </div>
-        <div className="criteria">{event.criteria}</div>
+        */}
+          <p className="criteria">{event.criteria}</p>
+        </div>
       </div>
     </Card>
   );

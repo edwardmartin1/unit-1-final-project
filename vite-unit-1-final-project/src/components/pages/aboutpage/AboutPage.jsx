@@ -9,8 +9,8 @@ const AboutPage = () => {
           <h2>The Bessie's Table story</h2>
           <p>
             In 2003, we heard the call and started Bessie's Table. It's a
-            mission with one simple goal; to "Provide a hot home-cooked meal, in
-            a welcoming setting, to persons and families in need, at no cost.”
+            mission with one simple goal: to provide a hot home-cooked meal, in
+            a welcoming setting, to persons and families in need, at no cost.
           </p>
           <p>
             It works on the “Stone Soup Principle”; we gather donated food items
