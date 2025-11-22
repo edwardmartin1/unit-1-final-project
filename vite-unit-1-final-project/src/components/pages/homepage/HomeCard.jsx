@@ -18,7 +18,7 @@ const HomeCard = ({
             (id) => id !== taskId
           );
 
-          /* if removing the final task for an event then remove the entire event */
+          /* if removing the final registered task for an event then remove the entire event */
           if (updatedTasks.length === 0) return null;
           return { ...registration, selectedTasks: updatedTasks };
         })
@@ -43,9 +43,9 @@ const HomeCard = ({
 
   return (
     <Card clickable={false}>
-      <div className="home-card">
+      <div>
         <div key={idx}>
-          <h5>{getEventDate(registration.eventId)}</h5> {/*{" - "}*/}
+          <h5>{getEventDate(registration.eventId)}</h5>
           <h6>{getEventTitle(registration.eventId)}</h6>
           <ul className="homepage-ul">
             {registration.selectedTasks.map((taskId) => (

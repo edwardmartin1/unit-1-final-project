@@ -3,7 +3,7 @@ import Card from "../../common/Card";
 const VolunteerEventCard = ({ event }) => {
   return (
     <Card clickable={true}>
-      <div className="event-card">
+      <div>
         <div>
           <h5>{event.title}</h5>
           <p>{event.description}</p>

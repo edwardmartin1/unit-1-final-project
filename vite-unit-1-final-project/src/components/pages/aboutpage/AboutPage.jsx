@@ -1,4 +1,4 @@
-import aboutImg from "../../../assets/keesha-s-kitchen-gDwy_JEoz8k-unsplash-about.jpg";
+const aboutImg = "/images/keesha-s-kitchen-gDwy_JEoz8k-unsplash-about.jpg";
 
 const AboutPage = () => {
   return (

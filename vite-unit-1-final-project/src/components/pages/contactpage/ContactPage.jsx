@@ -1,10 +1,10 @@
-import contactImg from "../../../assets/anna-pelzer-IGfIGP5ONV0-unsplash-contact.jpg";
+const contactImg = "/images/anna-pelzer-IGfIGP5ONV0-unsplash-contact.jpg";
 
 const ContactPage = () => {
   return (
     <div>
       <main className="main-content">
-        <div className="main-content">
+        <div>
           <h1>Location</h1>
           <h3>668 Graceland Ave</h3>
           <h3>Des Plaines, IL 60016</h3>

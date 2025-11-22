@@ -1,14 +1,14 @@
-/* hold
 .homepage-div {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "img img img"
-    "main main sidebar";
-  / *margin: 0;* /
-  gap: 0.5rem;
+    "img"
+    "main"
+    "sidebar";
+  gap: 1rem;
+  align-items: start;
 }
-*/
+
 .homepage-ul {
   list-style: none;
   padding: 0.1rem;
@@ -30,11 +30,7 @@
   position: sticky;
   top: 0;
   align-self: start;
-
-  /*padding: 1rem;*/
   padding: 10px 1rem;
-
-  /*margin: 1rem;*/
 }
 
 .homepage-img {
@@ -44,62 +40,26 @@
   object-fit: cover;
 }
 
-/* hold 
-@media only screen and (max-width: 550px) {
-  .homepage-div {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "img"
-      "main"
-      "sidebar";
-  }
-}
-*/
-
-/* try new */
-
-.homepage-div {
-  display: grid;
-  grid-template-columns: 1fr; /* mobile default */
-  grid-template-areas:
-    "img"
-    "main"
-    "sidebar";
-
-  gap: 1rem;
-  /*  padding: 0 1rem;*/ /* prevents touching screen edges */
-  align-items: start;
-}
-
-/* Tablet / small laptop */
+/* media queries */
 @media (min-width: 700px) {
   .homepage-div {
-    grid-template-columns: 2fr 1fr; /* main larger than sidebar */
+    grid-template-columns: 2fr 1fr;
     grid-template-areas:
       "img img"
       "main sidebar";
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
   .homepage-div {
-    grid-template-columns: 1fr 1fr 1fr; /* three columns, sidebar narrow */
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       "img img img"
       "main main sidebar";
   }
 }
-/*
-.main-content h2:first-child {
-  margin-top: 0;
-}
-*/
-
-/* try new */
 
 /* start flip card CSS */
-
 .flip-card {
   width: 90%;
   max-width: 240px;
@@ -170,5 +130,4 @@
   text-align: center;
   margin: 0;
 }
-
 /* end flip card CSS */

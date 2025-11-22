@@ -1,6 +1,6 @@
 const IconWithLabel = ({ id, classes, children }) => {
   if (!id) {
-    throw new Error(`Icon needs an id!`);
+    console.error("IconWithLabel: missing `id` prop");
   }
 
   return (

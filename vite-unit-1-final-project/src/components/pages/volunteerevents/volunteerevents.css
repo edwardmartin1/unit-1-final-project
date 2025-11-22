@@ -1,8 +1,7 @@
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
-  accent-color: #4a90e2; /* Changes the color of the checkmark in modern browsers */
-
+  accent-color: #4a90e2;
   cursor: pointer;
 }
 
@@ -13,11 +12,7 @@ input[type="checkbox"] {
   margin: 0;
   gap: 0.5rem;
 }
-/*
-.registration-main {
-  grid-area: main;
-}
-*/
+
 .registration-content {
   grid-area: main;
   min-width: 0;
@@ -27,38 +22,15 @@ input[type="checkbox"] {
   grid-area: sidebar;
   padding: 10px 1rem;
   min-width: 200px;
-  /* background: #D3D4D7; */
 }
 
+/*media queries for volunteer events registration page */
 @media only screen and (max-width: 1023px) and (min-width: 600px) {
   .registration-div {
     grid-template-columns: 2fr 1fr;
     grid-template-areas: "main sidebar";
   }
 }
-
-/*
-@media (min-width: 900px) and (max-width: 1023px) {
-  .registration-div {
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas: "main sidebar";
-  }
-}
-@media (min-width: 551px) and (max-width: 899px) {
-  .registration-div {
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "main sidebar";
-  }
-}
-*/
-/*
-@media (min-width: 600px) and (max-width: 1023px) {
-  .registration-div {
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "main sidebar";
-  }
-}
-*/
 
 @media only screen and (max-width: 599px) {
   .registration-div {
@@ -86,7 +58,7 @@ input[type="email"] {
 }
 
 input[type="email"] {
-  background-image: url("../../../assets/email.png");
+  background-image: url("/src/assets/email.jpg");
 }
 
 input:focus,
@@ -97,7 +69,6 @@ input:hover {
 
 fieldset {
   margin: auto;
-
   width: 95%;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
@@ -118,43 +89,31 @@ fieldset {
 }
 
 .event-card-container {
-  /* masonry layout */
   columns: 1;
   column-gap: 15px;
   margin-top: 20px;
-
-  gap: 20px; /* I added this to put a gap between cards */
+  /*  gap: 20px;*/ /* put a gap between cards */
 }
-
+/*
 .event-card-image {
   width: 100%;
   margin-bottom: 8px;
 }
-
+*/
 .criteria {
   font-style: italic;
   margin-bottom: 20px;
 }
-
+/*
 .register-button-container {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
 }
+*/
 
-/** MEDIA QUERIES **/
-
-/* 380-479 */
-@media screen and (min-width: 380px) {
-  /* No changes needed in this range */
-}
-
-/* 480-767 */
-@media screen and (min-width: 480px) {
-  /* No changes needed in this range */
-}
-
-/* 768-1024 */
+/* media queries for volunteer event card page */
+/* 768-1023 */
 @media screen and (min-width: 768px) {
   .event-card-container {
     columns: 2;
@@ -168,13 +127,7 @@ fieldset {
   }
 }
 
-/* 1200-1365 */
-@media screen and (min-width: 1200px) {
-  /* No changes needed in this range */
-}
-
 /* 1366+ */
-/*@media screen and (min-width: 1366px) {*/
 @media screen and (min-width: 1366px) {
   .event-card-container {
     columns: 4;

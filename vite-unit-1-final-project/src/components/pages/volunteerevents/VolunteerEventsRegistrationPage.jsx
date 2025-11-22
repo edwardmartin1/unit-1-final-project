@@ -81,13 +81,6 @@ const VolunteerEventsRegistrationPage = ({
     formData.name.trim() != "" &&
     formData.email.trim() != "";
 
-  /*
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-*/
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -112,7 +105,6 @@ const VolunteerEventsRegistrationPage = ({
 
       if (alreadyRegistered) {
         /* adding additional task for event you are already registered for */
-
         const updatedAllVolunteerRegistrations = allVolunteerRegistrations.map(
           (event) => {
             /* check if the current registered event is the one we need to update */
@@ -169,11 +161,8 @@ const VolunteerEventsRegistrationPage = ({
     );
   } else {
     return (
-      /*try this*/
-      <main className="registration-main">
+      <main>
         <div className="registration-div">
-          {/*<main className="registration-main">*/}
-          {/* LEFT SIDE CONTENT */}
           <div className="registration-content">
             <GoBack
               text={"View All Volunteer Events"}
@@ -266,10 +255,7 @@ const VolunteerEventsRegistrationPage = ({
                 </fieldset>
               </form>
             )}
-
-            {/*</main>*/}
-          </div>{" "}
-          {/*added 11/21*/}
+          </div>
           <aside className="registration-sidebar">
             <h5>{eventWorkingOn.title}</h5>
             <h6>{eventWorkingOn.description}</h6>

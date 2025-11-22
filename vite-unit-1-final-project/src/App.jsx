@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router";
-//import './App.css'
-//console.log("got here in App.jsx");
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -19,9 +17,6 @@ import ContactPage from "./components/pages/contactpage/ContactPage.jsx";
 
 import VolunteerEvent from "./classes/VolunteerEvent";
 import VolunteerTask from "./classes/VolunteerTask";
-
-console.log("got here in App.jsx");
-console.log("mockVolunteerEvents", mockVolunteerEvents);
 
 const App = () => {
   const [allVolunteerEvents, setAllVolunteerEvents] = useState([]);
@@ -79,13 +74,10 @@ const App = () => {
   useEffect(() => {
     fetchVolunteerEvents();
     fetchVolunteerTasks();
-
-    //console.log("hh-allVolunteerEvents", {allVolunteerEvents});
-    //console.log("hh-allVolunteerTasks", {allVolunteerTasks});
   }, []);
 
   return (
-    <div id="body-container" className="app-container">
+    <div id="body-container">
       <Header />
 
       <Routes>

@@ -10,21 +10,9 @@ html {
   box-sizing: inherit;
 }
 
-/* 
-    NOTE: For responsive design, if you define the font-size range 
-    with clamp() on the html selector as shown above, all other elements 
-    where you want the sizes to adjust similarly can be defined in terms
-    of rem (root em) and will be based on the html selector's value range.
-
-    Learn more here: https://clampcalculator.com/
-*/
-
 body {
   background-color: white;
-  color: #1e323c;
-  color: #29536a;
   color: #1f4250;
-  font-family: "Assistant", sans-serif;
   font-family:
     system-ui,
     -apple-system,
@@ -39,37 +27,9 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-/*
-#root-container::before {
-    background-image: var(--bg-img);
-    background-size: cover;
-    background-repeat: no-repeat;
-    content: ''; / * Essential for ::before to be rendered * /
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.1;
-    z-index: -1;
-}
-*/
 
 body::before {
-  /*
-.app-container {    
-*/
-
-  /* Photo credit: https://www.pexels.com/@gdtography-277628/ */
-  /* background-image: url('https://i.ibb.co/TD6fmXWK/white-installation.jpg'); */
-  /*  background-image: keith-misner-h0Vxgz5tyXA-unsplash-background.jpg */
-  /* background-image: var(--bg-img); */
-
-  /* background-image: url("./assets/keith-misner-h0Vxgz5tyXA-unsplash-background.jpg"); */
-  /*    background-image: url("./assets/andrew-ridley-jR4Zf-riEjI-unsplash-background.jpg"); */
-  /* background-image: url("./assets/jean-philippe-delberghe-75xPHEQBmvA-unsplash-background.jpg"); */
-  background-image: url("./assets/joe-woods-4Zaq5xY5M_c-unsplash-background.jpg");
-
+  background-image: url("/src/assets/joe-woods-4Zaq5xY5M_c-unsplash-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   content: ""; /* Essential for ::before to be rendered */
@@ -98,7 +58,6 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1e323c;
   background-color: #29536a;
   color: white;
   width: 100%;
@@ -112,17 +71,18 @@ main {
 .main-content {
   padding: 10px clamp(20px, 4vw, 30px) 20px;
 }
-
+/*
 strong {
   font-weight: 700;
 }
-
+*/
 h1,
 h2,
 h3,
-h4 {
-  font-family: "Kodchasan", sans-serif;
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+h4,
+h5,
+h6 {
+  font-family: inherit; /*"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;*/
   text-transform: uppercase;
 }
 
@@ -133,27 +93,18 @@ h5,
 h6 {
   margin: 12px 0 0;
 }
-/*
-p {
-  color: #1f4250;
-}
-*/
+
 h1 {
-  color: #c66311;
   color: #e8751a;
   font-size: 1.4rem;
   font-weight: 700;
 }
 
 h2 {
-  color: white;
-  color: #0f1b22;
   color: #1e1e1e;
-  background-color: #c66311;
   background-color: #e8751a;
-
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 400;
   letter-spacing: 6px;
   width: auto;
   border-radius: 2px;
@@ -162,29 +113,23 @@ h2 {
 }
 
 h3 {
-  color: #1e323c;
-  color: #29536a;
   color: #1f4250;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 h4 {
-  color: #c66311;
   color: #e8751a;
   font-size: 1.1rem;
 }
 
 h5 {
-  color: #c66311;
   color: #e8751a;
   font-weight: 700;
   font-size: 1.1rem;
 }
 
 h6 {
-  color: #1e323c;
-  color: #29536a;
   color: #1f4250;
   font-weight: 600;
   font-size: 1rem;
@@ -196,7 +141,7 @@ p {
 
 a,
 .link-like {
-  color: #c66311;
+  font-family: inherit;
   color: #e8751a;
   font-weight: bold;
   text-decoration: none;
@@ -205,7 +150,6 @@ a,
 
 a:hover,
 a:active {
-  color: #b95a0a;
   color: #cc5f00;
 }
 
@@ -213,23 +157,11 @@ iframe {
   height: 450px;
   width: calc(100% - 4px); /* subtract border */
   margin: 20px 0;
-  border: 2px solid #1e323c;
   border: 2px solid #1f4250;
 }
 
-/** MEDIA QUERIES **/
-
-/* 380-479 */
-@media screen and (min-width: 380px) {
-  /* No changes needed in this range */
-}
-
-/* 480-767 */
-@media screen and (min-width: 480px) {
-  /* No changes needed in this range */
-}
-
-/* 768-1024 */
+/* media queries */
+/* 768-1023 */
 @media screen and (min-width: 768px) {
   header {
     flex-direction: row;
@@ -237,18 +169,9 @@ iframe {
     padding: 15px clamp(20px, 4vw, 30px);
   }
 }
-
-/* 1024-1365 */
+/* 1023+ */
 @media screen and (min-width: 1024px) {
-  /* No changes needed in this range */
-}
-
-/* 1200-1365 */
-@media screen and (min-width: 1200px) {
-  /* No changes needed in this range */
-}
-
-/* 1366+ */
-@media screen and (min-width: 1366px) {
-  /* No changes needed in this range */
+  header {
+    padding: 20px clamp(30px, 4vw, 40px);
+  }
 }
