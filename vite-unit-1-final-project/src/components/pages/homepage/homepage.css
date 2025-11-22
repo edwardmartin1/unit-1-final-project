@@ -14,6 +14,10 @@
   padding: 0.1rem;
 }
 
+.homepage-ul li {
+  margin-bottom: 0.2rem;
+}
+
 .homepage-main {
   grid-area: main;
   display: flex;

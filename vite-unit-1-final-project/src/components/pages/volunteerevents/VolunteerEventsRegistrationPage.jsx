@@ -58,7 +58,7 @@ const VolunteerEventsRegistrationPage = ({
     allVolunteerEvents.find((event) => String(event.eventId) === eventId) ||
     null;
 
-  /* update the stateful variable formData */
+  /* update the stateful variable formData when form fields are updated */
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -125,7 +125,7 @@ const VolunteerEventsRegistrationPage = ({
                 ],
               };
             } else {
-              /* save the other registereed events as is */
+              /* save the other registered events as is */
               return event;
             }
           }
@@ -143,7 +143,6 @@ const VolunteerEventsRegistrationPage = ({
         ].sort((a, b) => a.eventId - b.eventId);
       }
 
-      /* save back to the stateful variable using setter */
       setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
 
       setFormData({
@@ -170,111 +169,116 @@ const VolunteerEventsRegistrationPage = ({
     );
   } else {
     return (
-      <div className="registration-div">
-        <div>
-          <GoBack
-            text={"View All Volunteer Events"}
-            handleClick={handleGoToVolunteerEventsPage}
-          />
-        </div>
+      /*try this*/
+      <main className="registration-main">
+        <div className="registration-div">
+          {/*<main className="registration-main">*/}
+          {/* LEFT SIDE CONTENT */}
+          <div className="registration-content">
+            <GoBack
+              text={"View All Volunteer Events"}
+              handleClick={handleGoToVolunteerEventsPage}
+            />
 
-        <main className="registration-main">
-          {isRegistered ? (
-            <h3>Registration complete.</h3>
-          ) : (
-            <form>
-              <fieldset>
-                <h2>
-                  Register for Event:{" "}
-                  {eventWorkingOn ? eventWorkingOn.title : "Loading event..."}
-                </h2>
+            {isRegistered ? (
+              <h3>Registration complete.</h3>
+            ) : (
+              <form>
+                <fieldset>
+                  <h2>
+                    Register for Event:{" "}
+                    {eventWorkingOn ? eventWorkingOn.title : "Loading event..."}
+                  </h2>
 
-                <label>
-                  Name:
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required={true}
-                  />
-                </label>
-
-                <InputErrorMessage
-                  hasError={hasErrors && formData.name.trim() === ""}
-                  msg={errorMessages["nameRequired"]}
-                />
-
-                <div>
                   <label>
-                    Email:
+                    Name:
                     <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
+                      type="text"
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
                       required={true}
                     />
                   </label>
 
                   <InputErrorMessage
-                    hasError={hasErrors && formData.email.trim() === ""}
-                    msg={errorMessages["emailRequired"]}
+                    hasError={hasErrors && formData.name.trim() === ""}
+                    msg={errorMessages["nameRequired"]}
                   />
-                </div>
 
-                <h3>Available Volunteer Tasks</h3>
-
-                {eventTasks.length > 0 ? (
                   <div>
-                    {eventTasks.map((task) => (
-                      <div key={task.taskId}>
-                        <label>
-                          <input
-                            type="checkbox"
-                            name="selectedTasks"
-                            checked={formData.selectedTasks.includes(
-                              task.taskId
-                            )}
-                            onChange={() => handleCheckboxChange(task.taskId)}
-                          />
-                          {task.description}
-                        </label>
-                      </div>
-                    ))}
+                    <label>
+                      Email:
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required={true}
+                      />
+                    </label>
 
                     <InputErrorMessage
-                      hasError={
-                        hasErrors && formData.selectedTasks.length === 0
-                      }
-                      msg={errorMessages["taskRequired"]}
+                      hasError={hasErrors && formData.email.trim() === ""}
+                      msg={errorMessages["emailRequired"]}
                     />
                   </div>
-                ) : (
-                  <p>No tasks found for this event.</p>
-                )}
 
-                <Button
-                  id={`submit-event-${eventId}`}
-                  type="submit"
-                  label="Register"
-                  handleClick={handleSubmit}
-                  classes={hasCheckboxes ? "btn-enabled" : "btn-disabled"}
-                  disabled={!hasCheckboxes}
-                />
-              </fieldset>
-            </form>
-          )}
-        </main>
+                  <h3>Available Volunteer Tasks</h3>
 
-        <aside className="registration-sidebar">
-          <h5>{eventWorkingOn.title}</h5>
-          <h6>{eventWorkingOn.description}</h6>
-          <h6>{eventWorkingOn.getFormattedDate()}</h6>
-          <h6>{eventWorkingOn.getFormattedTime()}</h6>
-          <h6 className="criteria">{eventWorkingOn.criteria}</h6>
-        </aside>
-      </div>
+                  {eventTasks.length > 0 ? (
+                    <div>
+                      {eventTasks.map((task) => (
+                        <div key={task.taskId}>
+                          <label>
+                            <input
+                              type="checkbox"
+                              name="selectedTasks"
+                              checked={formData.selectedTasks.includes(
+                                task.taskId
+                              )}
+                              onChange={() => handleCheckboxChange(task.taskId)}
+                            />
+                            {task.description}
+                          </label>
+                        </div>
+                      ))}
+
+                      <InputErrorMessage
+                        hasError={
+                          hasErrors && formData.selectedTasks.length === 0
+                        }
+                        msg={errorMessages["taskRequired"]}
+                      />
+                    </div>
+                  ) : (
+                    <p>No tasks found for this event.</p>
+                  )}
+
+                  <Button
+                    id={`submit-event-${eventId}`}
+                    type="submit"
+                    label="Register"
+                    handleClick={handleSubmit}
+                    classes={hasCheckboxes ? "btn-enabled" : "btn-disabled"}
+                    disabled={!hasCheckboxes}
+                  />
+                </fieldset>
+              </form>
+            )}
+
+            {/*</main>*/}
+          </div>{" "}
+          {/*added 11/21*/}
+          <aside className="registration-sidebar">
+            <h5>{eventWorkingOn.title}</h5>
+            <h6>{eventWorkingOn.description}</h6>
+            <h6>{eventWorkingOn.getFormattedDate()}</h6>
+            <h6>{eventWorkingOn.getFormattedTime()}</h6>
+            <h6 className="criteria">{eventWorkingOn.criteria}</h6>
+          </aside>
+        </div>
+      </main>
     );
   }
 };

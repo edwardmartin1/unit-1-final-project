@@ -15,20 +15,16 @@ const VolunteerEventsPage = ({ allVolunteerEvents }) => {
     (a, b) => new Date(a.date) - new Date(b.date)
   );
 
-  //console.log("allVolunteerevents", allVolunteerEvents);
-  //console.log("VolunteerEventsPage sortedEvents", sortedEvents);
-
   let allVolunteerEventsJSX = [...sortedEvents].map((event, index) => {
     return (
       <Link
         to={"/volunteerevents/registration/" + event.eventId}
         key={event.eventId ?? index}
       >
-        <VolunteerEventCard /*key={event.eventId}*/ event={event} />
+        <VolunteerEventCard event={event} />
       </Link>
     );
   });
-  //console.log("VolunteerEventsPage allVolunteerEventsJSX", allVolunteerEventsJSX);
 
   return (
     <main className="main-content">
