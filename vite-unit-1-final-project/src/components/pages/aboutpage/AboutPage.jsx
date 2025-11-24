@@ -2,9 +2,9 @@ const aboutImg = "/images/keesha-s-kitchen-gDwy_JEoz8k-unsplash-about.jpg";
 
 const AboutPage = () => {
   return (
-    <div>
-      <main>
-        <div className="main-content">
+    <main className="main-content">
+      <div className="about-container">
+        <div className="about-content">
           <h1>About Bessie's Table</h1>
           <h2>The Bessie's Table story</h2>
           <p>
@@ -34,10 +34,10 @@ const AboutPage = () => {
             recognizing you as a partner.
           </p>
         </div>
-      </main>
 
-      <img className="aboutpage-img" src={aboutImg} alt="soup in a bowl" />
-    </div>
+        <img className="aboutpage-img" src={aboutImg} alt="soup in a bowl" />
+      </div>
+    </main>
   );
 };
 
