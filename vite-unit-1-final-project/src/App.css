@@ -157,8 +157,8 @@ iframe {
 }
 
 /* media queries */
-/* 768-1023 */
-@media screen and (min-width: 768px) {
+/* 700-1023 */
+@media screen and (min-width: 700px) {
   header {
     flex-direction: row;
     justify-content: space-between;

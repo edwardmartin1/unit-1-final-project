@@ -25,14 +25,14 @@ input[type="checkbox"] {
 }
 
 /*media queries for volunteer events registration page */
-@media only screen and (max-width: 1023px) and (min-width: 600px) {
+@media only screen and (max-width: 1023px) and (min-width: 701px) {
   .registration-div {
     grid-template-columns: 2fr 1fr;
     grid-template-areas: "main sidebar";
   }
 }
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 700px) {
   .registration-div {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -101,8 +101,8 @@ fieldset {
 }
 
 /* media queries for volunteer event card page */
-/* 768-1023 */
-@media screen and (min-width: 768px) {
+/* 700-1023 */
+@media screen and (min-width: 700px) {
   .event-card-container {
     columns: 2;
   }
