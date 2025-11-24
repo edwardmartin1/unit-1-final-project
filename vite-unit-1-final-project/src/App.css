@@ -29,7 +29,7 @@ body {
 }
 
 body::before {
-  background-image: url("/src/assets/joe-woods-4Zaq5xY5M_c-unsplash-background.jpg");
+  background-image: url("./assets/joe-woods-4Zaq5xY5M_c-unsplash-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   content: ""; /* Essential for ::before to be rendered */

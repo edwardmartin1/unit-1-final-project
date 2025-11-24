@@ -41,10 +41,10 @@ const HomePage = ({
         <div className="main-content">
           <h2>A home-cooked dinner, free to all who are hungry.</h2>
 
-          <h2>
+          <h4>
             Every Monday at 5:30 p.m., we serve a delicious, home-cooked,
             healthy meal to anyone who comes to our door. Anyone.
-          </h2>
+          </h4>
 
           <p>Do you enjoy helping and enriching the lives of others?</p>
           <p>

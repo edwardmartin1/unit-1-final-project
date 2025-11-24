@@ -58,7 +58,7 @@ input[type="email"] {
 }
 
 input[type="email"] {
-  background-image: url("/src/assets/email.jpg");
+  background-image: url("../../../src/assets/email.png");
 }
 
 input:focus,
