@@ -1,6 +1,50 @@
-.contactpage-img {
-  grid-area: img;
+.contact-location,
+.contact-phone,
+.contact-email {
+  font-size: 0.9rem;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.contact-content {
+  flex: 1;
+}
+
+.contact-content iframe {
   width: 100%;
-  height: 50vh;
+  height: 300px;
+  border: 2px solid #1f4250;
+  margin: 20px 0;
+}
+
+.contactpage-img {
+  width: 100%;
+  height: 40vh;
   object-fit: cover;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 700px) {
+  .contactpage-img {
+    height: 45vh;
+  }
+
+  .contact-content iframe {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contactpage-img {
+    height: 50vh;
+  }
+
+  .contact-content iframe {
+    height: 450px;
+  }
 }
