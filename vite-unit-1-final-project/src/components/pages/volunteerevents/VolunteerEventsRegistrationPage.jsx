@@ -1,68 +1,40 @@
-
-import {useState, useEffect} from "react";
-import {useParams, useNavigate} from "react-router";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
 import Button from "../../common/Button";
 import ErrorPage from "../ErrorPage";
-import GoBack from '../../common/GoBack';
-import InputErrorMessage from '../../common/InputErrorMessage';
-
+import GoBack from "../../common/GoBack";
+import InputErrorMessage from "../../common/InputErrorMessage";
 
 let errorMessages = {
-    nameRequired: 'Name is required.',
-    emailRequired: 'Email is required.',
-    taskRequired: 'At least 1 task required.',
+  nameRequired: "Name is required.",
+  emailRequired: "Email is required.",
+  taskRequired: "At least 1 task required.",
 };
 
+const VolunteerEventsRegistrationPage = ({
+  allVolunteerEvents,
+  allVolunteerTasks,
+  allVolunteerRegistrations,
+  setAllVolunteerRegistrations,
+}) => {
+  /* retrieve the parameter from the URL */
+  const { eventId } = useParams();
 
-const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
-                                          allVolunteerTasks, 
-                                          allVolunteerRegistrations, 
-                                          setAllVolunteerRegistrations}) => {
-
-    //console.log("VolunteerEventsRegistrationPage.jsx allVolunteerEvents", allVolunteerEvents);
-    //console.log("VolunteerEventsRegistrationPage.jsx allVolunteerTasks", allVolunteerTasks);
-
-
-
-  const {eventId} = useParams();
-    
-//  console.log("got into VolunteerEventsRegistrationPage");
-//  console.log("eventId", eventId);
-//console.log("after using eventId");
-
-//  const [eventWorkingOn, setEventWorkingOn] = useState(null);
-  const [eventTasks, setEventTasks] = useState([]);  
+  const [eventTasks, setEventTasks] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
-  
+
   const [formData, setFormData] = useState({
-    name: "",    
+    name: "",
     email: "",
     selectedTasks: [],
   });
 
-  /* find the event */
-//  useEffect(() => {
-//    console.log("VolunteerEventsRegistrationPage mounted");
-
-//    const foundEvent = allVolunteerEvents.find((event) => 
-//      String(event.eventId) === eventId);
-      
-//    if (foundEvent !== eventWorkingOn) {
-//      setEventWorkingOn(foundEvent || null);
-//    }
-//    console.log("eventWorkingOn", eventWorkingOn);
-
-//  }, [eventId, allVolunteerEvents, eventWorkingOn]);
-
-
   const navigate = useNavigate();
 
   const handleGoToVolunteerEventsPage = () => {
-        navigate("/volunteerevents");
+    navigate("/volunteerevents");
   };
-
-
 
   /* find the available tasks */
   useEffect(() => {
@@ -83,290 +55,222 @@ const VolunteerEventsRegistrationPage = ({allVolunteerEvents,
     setEventTasks(filteredTasks);
   }, [eventId, allVolunteerTasks, allVolunteerRegistrations]);
 
-const eventWorkingOn = allVolunteerEvents.find(
-  (event) => String(event.eventId) === eventId
-) || null;
+  const eventWorkingOn =
+    allVolunteerEvents.find((event) => String(event.eventId) === eventId) ||
+    null;
 
-
-//  console.log("finished looping through registrations");
-
-
-
-  /* update the stateful variable formData */
+  /* update the stateful variable formData when form fields are updated */
   const handleChange = (event) => {
-    const {name, value} = event.target;
-    setFormData((prev) => ({...prev, [name]: value}));
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   /* checking and unchecking a checkbox */
   const handleCheckboxChange = (taskId) => {
     setFormData((prev) => {
       const selected = prev.selectedTasks.includes(taskId)
-      ? prev.selectedTasks.filter((id) => id !== taskId)
-      : [...prev.selectedTasks, taskId];
+        ? prev.selectedTasks.filter((id) => id !== taskId)
+        : [...prev.selectedTasks, taskId];
 
-      return {...prev, selectedTasks: selected};
+      return { ...prev, selectedTasks: selected };
     });
   };
 
-
-
   /* look at checkboxes, if length zero then false, else true. also, name & email must be populated */
-  const isFormComplete = 
-
-
- // console.log("VolunteerEventsRegistrationPage formData.selectedTasks.length", formData.selectedTasks.length);
-
-     formData.selectedTasks.length > 0 
-              && formData.name.trim() != "" 
-              && formData.email.trim() != "";
-
-
-
-
-  /*
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-*/
-
+  const isFormComplete =
+    formData.selectedTasks.length > 0 &&
+    formData.name.trim() != "" &&
+    formData.email.trim() != "";
 
   const handleSubmit = (e) => {
-    
     e.preventDefault();
 
-      if (!isFormComplete) 
-      {
-            setHasErrors(true);
-      } 
-      else 
-      {
-    
-        const numberEventId = Number(eventId);
-  
-        const registrationData = {
-          eventId: numberEventId,
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          date: eventWorkingOn.date,  /* used for sorting */
-          selectedTasks: formData.selectedTasks,
-        };
+    if (!isFormComplete) {
+      setHasErrors(true);
+    } else {
+      const numberEventId = Number(eventId);
 
-        //console.log("registrationData", registrationData);
-        
-        const alreadyRegistered = 
-          allVolunteerRegistrations.some((registration) => 
-            registration.eventId === registrationData.eventId);
-    
-        let sortedAllVolunteerRegistrations = [];
+      const registrationData = {
+        eventId: numberEventId,
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        date: eventWorkingOn.date /* used for sorting */,
+        selectedTasks: formData.selectedTasks,
+      };
 
-        if (alreadyRegistered)      
-        {
-          /* adding additional task for event you are already registered for */
-      
-          const updatedAllVolunteerRegistrations = allVolunteerRegistrations.map((event) => {
-          /* check if the current registered event is the one we need to update */
-            if (event.eventId === numberEventId)
-            {
+      const alreadyRegistered = allVolunteerRegistrations.some(
+        (registration) => registration.eventId === registrationData.eventId
+      );
+
+      let sortedAllVolunteerRegistrations = [];
+
+      if (alreadyRegistered) {
+        /* adding additional task for event you are already registered for */
+        const updatedAllVolunteerRegistrations = allVolunteerRegistrations.map(
+          (event) => {
+            /* check if the current registered event is the one we need to update */
+            if (event.eventId === numberEventId) {
               return {
-                ...event, selectedTasks: [...event.selectedTasks, ...registrationData.selectedTasks]
+                ...event,
+                selectedTasks: [
+                  ...event.selectedTasks,
+                  ...registrationData.selectedTasks,
+                ],
               };
-            }
-            /* save the other registereed events as is */
-            else
-            {
+            } else {
+              /* save the other registered events as is */
               return event;
             }
-          });
-    
-          /* sort the registrations */
-          sortedAllVolunteerRegistrations = 
-            [...updatedAllVolunteerRegistrations].sort((a, b) => new Date(a.date) - new Date(b.date));
+          }
+        );
 
-        }
-        else
-        {
-          /* adding event for the first time and the selected tasks, then sort the registrations */      
-          sortedAllVolunteerRegistrations = 
-            [...allVolunteerRegistrations, registrationData].sort((a, b) => a.eventId - b.eventId);
+        /* sort the registrations */
+        sortedAllVolunteerRegistrations = [
+          ...updatedAllVolunteerRegistrations,
+        ].sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else {
+        /* adding event for the first time and the selected tasks, then sort the registrations */
+        sortedAllVolunteerRegistrations = [
+          ...allVolunteerRegistrations,
+          registrationData,
+        ].sort((a, b) => a.eventId - b.eventId);
+      }
 
-        }  
+      setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
 
-        /* save back to the stateful variable using setter */
-        setAllVolunteerRegistrations(sortedAllVolunteerRegistrations);
+      setFormData({
+        name: "",
+        email: "",
+        selectedTasks: [],
+      });
 
-        setFormData({
-          name: "",
-          email: "",
-          selectedTasks: [],
-        });
-    
-        setIsRegistered(true);
-      }  
-      
+      setIsRegistered(true);
+    }
   };
 
+  const hasCheckboxes = eventTasks.length > 0;
 
-console.log("VEG eventTasks", eventTasks.length);
-
-
-const hasCheckboxes = eventTasks.length > 0;
-
-
-
- if (eventWorkingOn === null)
-  {
- //   console.log("VolunteerEventsRegistrationPage run ErrorPage");
+  if (eventWorkingOn === null) {
     return (
       <ErrorPage>
         <p>Sorry, that volunteer event does not exist!</p>
-         <GoBack text={'View All Volunteer Events'} handleClick={handleGoToVolunteerEventsPage} />
+        <GoBack
+          text={"View All Volunteer Events"}
+          handleClick={handleGoToVolunteerEventsPage}
+        />
       </ErrorPage>
-    )
-    
-}
-  else
-  
+    );
+  } else {
+    return (
+      <main>
+        {/* main content section */}
+        <div className="registration-div">
+          <div className="registration-content">
+            <GoBack
+              text={"View All Volunteer Events"}
+              handleClick={handleGoToVolunteerEventsPage}
+            />
 
-//  if (!eventWorkingOn)
-//  {
-//    console.log("VolunteerEventsRegistrationPage run ErrorPage");
-//    return (
-//      <ErrorPage>
-//        <p>Sorry, that volunteer event does not exist!</p>
-//       <GoBack text={'View All Volunteer Events'} handleClick={handleGoToVolunteerEventsPage} />
-//      </ErrorPage>
-//    )
-    
-//  }
+            {isRegistered ? (
+              <h3>Registration complete.</h3>
+            ) : (
+              <form>
+                <fieldset>
+                  <h2>
+                    Register for Event:{" "}
+                    {eventWorkingOn ? eventWorkingOn.title : "Loading event..."}
+                  </h2>
 
+                  <label>
+                    Name:
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required={true}
+                    />
+                  </label>
 
-
-  {
-
-  
-  return (
-    <div className="registration-div">
-      <div>
-          <GoBack text={'View All Volunteer Events'} handleClick={handleGoToVolunteerEventsPage} />
-      </div>
-    
-      <main className="registration-main">
-        {isRegistered 
-          ? (<h3>Registration complete.</h3>)
-          :(
-            <form>
-              <fieldset>
-            
-              <h2>Register for Event: {eventWorkingOn ? eventWorkingOn.title : "Loading event..."}</h2>
-
-
-                <label>
-                  Name:
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required={true}
-                  />
-                </label>
-
-                <InputErrorMessage
-                  hasError={hasErrors && formData.name.trim() === ""}
-                  msg={errorMessages["nameRequired"]}
-                />
-
-          
-
-              <div>
-                <label>
-                  Email:
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required={true}                    
+                  <InputErrorMessage
+                    hasError={hasErrors && formData.name.trim() === ""}
+                    msg={errorMessages["nameRequired"]}
                   />
 
-                </label>
-
-                <InputErrorMessage
-                  hasError={hasErrors && formData.email.trim() === ""}
-                  msg={errorMessages["emailRequired"]}
-                />
-
-
-              </div>
-
-              <h3>Available Volunteer Tasks</h3>
-
-              {eventTasks.length > 0 ? 
-                (
                   <div>
-                    {eventTasks.map((task) => 
-                    (
-                      <div key={task.taskId}>
-                        <label>
-                          <input
-                            type="checkbox"
-                            checked={formData.selectedTasks.includes(task.taskId)}
-                            onChange={() => handleCheckboxChange(task.taskId)}
-                          />
-                          {task.description}
-                        </label>
-                      </div>
-                    ))}
+                    <label>
+                      Email:
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required={true}
+                      />
+                    </label>
 
                     <InputErrorMessage
-                      hasError={hasErrors && formData.selectedTasks.length === 0}
-                      msg={errorMessages["taskRequired"]}
+                      hasError={hasErrors && formData.email.trim() === ""}
+                      msg={errorMessages["emailRequired"]}
                     />
-
                   </div>
-                  
 
-                ) : 
-                (
-                  <p>No tasks found for this event.</p>      
-                )
-              }         
+                  <h3>Available Volunteer Tasks</h3>
 
+                  {eventTasks.length > 0 ? (
+                    <div>
+                      {eventTasks.map((task) => (
+                        <div key={task.taskId}>
+                          <label>
+                            <input
+                              type="checkbox"
+                              name="selectedTasks"
+                              checked={formData.selectedTasks.includes(
+                                task.taskId
+                              )}
+                              onChange={() => handleCheckboxChange(task.taskId)}
+                            />
+                            {task.description}
+                          </label>
+                        </div>
+                      ))}
 
-              <Button
-                id={`submit-event-${eventId}`}
-                type="submit"
-                label="Register"
-                handleClick={handleSubmit}
-                classes={hasCheckboxes ? "btn-enabled" : "btn-disabled"}
-                
-                disabled={!hasCheckboxes}                   
-              />
-              {/*classes={isFormComplete ? "btn-enabled" : "btn-disabled"}*/}
-              {/*disabled={!isFormComplete}*/}
+                      <InputErrorMessage
+                        hasError={
+                          hasErrors && formData.selectedTasks.length === 0
+                        }
+                        msg={errorMessages["taskRequired"]}
+                      />
+                    </div>
+                  ) : (
+                    <p>No tasks found for this event.</p>
+                  )}
 
-              </fieldset>
-            </form>
-          )}
+                  <Button
+                    id={`submit-event-${eventId}`}
+                    type="submit"
+                    label="Register"
+                    handleClick={handleSubmit}
+                    classes={hasCheckboxes ? "btn-enabled" : "btn-disabled"}
+                    disabled={!hasCheckboxes}
+                  />
+                </fieldset>
+              </form>
+            )}
+          </div>
 
+          {/* sidebar with event information */}
+          <aside className="registration-sidebar">
+            <h5>{eventWorkingOn.title}</h5>
+            <h6>{eventWorkingOn.description}</h6>
+            <h6>{eventWorkingOn.getFormattedDate()}</h6>
+            <h6>{eventWorkingOn.getFormattedTime()}</h6>
+            <h6 className="criteria">{eventWorkingOn.criteria}</h6>
+          </aside>
+        </div>
       </main>
-
-      <aside className="registration-sidebar">
-        <h5>{eventWorkingOn.title}</h5>
-        <h6>{eventWorkingOn.description}</h6>
-        <h6>{eventWorkingOn.getFormattedDate()}</h6>
-        <h6>{eventWorkingOn.getFormattedTime()}</h6>             
-        <h6 className="criteria">{eventWorkingOn.criteria}</h6>              
-        
-      </aside>
-      
-    
-    </div>      
-  );
+    );
   }
 };
 
 export default VolunteerEventsRegistrationPage;
-

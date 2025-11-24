@@ -1,12 +1,11 @@
 const Footer = () => {
-    let thisYear = new Date().getFullYear();
+  let thisYear = new Date().getFullYear();
 
-    return (
-        <footer>
-            <div>&copy; {thisYear} Bessie's Table</div>
-        </footer>
-    );
+  return (
+    <footer>
+      <div>&copy; {thisYear} Bessie's Table</div>
+    </footer>
+  );
 };
-  
-export default Footer;
 
+export default Footer;
