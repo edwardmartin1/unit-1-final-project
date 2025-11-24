@@ -100,7 +100,6 @@
 .card-front {
   background-color: aliceblue;
   color: #1e323c;
-
   background-color: #e6f7ff;
   color: #083442;
   color: #1f4250;
@@ -119,7 +118,6 @@
   height: auto;
   max-height: 65%;
   object-fit: cover;
-
   border-radius: 10px;
   margin-bottom: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

@@ -17,6 +17,7 @@ const VolunteerEventsRegistrationPage = ({
   allVolunteerRegistrations,
   setAllVolunteerRegistrations,
 }) => {
+  /* retrieve the parameter from the URL */
   const { eventId } = useParams();
 
   const [eventTasks, setEventTasks] = useState([]);
@@ -162,6 +163,7 @@ const VolunteerEventsRegistrationPage = ({
   } else {
     return (
       <main>
+        {/* main content section */}
         <div className="registration-div">
           <div className="registration-content">
             <GoBack
@@ -256,6 +258,8 @@ const VolunteerEventsRegistrationPage = ({
               </form>
             )}
           </div>
+
+          {/* sidebar with event information */}
           <aside className="registration-sidebar">
             <h5>{eventWorkingOn.title}</h5>
             <h6>{eventWorkingOn.description}</h6>

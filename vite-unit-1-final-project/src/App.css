@@ -71,18 +71,14 @@ main {
 .main-content {
   padding: 10px clamp(20px, 4vw, 30px) 20px;
 }
-/*
-strong {
-  font-weight: 700;
-}
-*/
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: inherit; /*"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;*/
+  font-family: inherit;
   text-transform: uppercase;
 }
 

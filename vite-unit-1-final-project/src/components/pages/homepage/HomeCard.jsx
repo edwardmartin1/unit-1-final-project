@@ -13,7 +13,7 @@ const HomeCard = ({
       return prev
         .map((registration, idx) => {
           if (idx !== registrationIndex) return registration;
-
+          /* remove the task that was cancelled */
           const updatedTasks = registration.selectedTasks.filter(
             (id) => id !== taskId
           );

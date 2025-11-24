@@ -25,6 +25,7 @@ const App = () => {
     []
   );
 
+  /* retrieve the volunteer events */
   const fetchVolunteerEvents = () => {
     let events = [];
 
@@ -49,6 +50,7 @@ const App = () => {
     }
   };
 
+  /* retrieve the volunteer tasks */
   const fetchVolunteerTasks = () => {
     let tasks = [];
 
@@ -71,6 +73,7 @@ const App = () => {
     }
   };
 
+  /* run when the component first mounts */
   useEffect(() => {
     fetchVolunteerEvents();
     fetchVolunteerTasks();

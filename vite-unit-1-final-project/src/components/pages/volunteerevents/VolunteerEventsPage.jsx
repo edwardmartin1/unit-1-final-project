@@ -5,12 +5,12 @@ const VolunteerEventsPage = ({ allVolunteerEvents }) => {
   /* get the current system date and time */
   const now = new Date();
 
-  // Filter to only show future events (date > now)
+  /* Filter to only show future events (date > now) */
   const upcomingEvents = allVolunteerEvents.filter(
     (event) => new Date(event.date) > now
   );
 
-  // Sort the remaining events by date/time
+  /* Sort the remaining events by date/time */
   const sortedEvents = [...upcomingEvents].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );

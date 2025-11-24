@@ -29,12 +29,14 @@ const HomePage = ({
 
   return (
     <div className="homepage-div">
+      {/* image at the top of the page */}
       <img
         className="homepage-img"
         src={homeImg}
         alt="volunteer serving meal"
       />
 
+      {/* main content section */}
       <main className="homepage-main">
         <div className="main-content">
           <h2>A home-cooked dinner, free to all who are hungry.</h2>
@@ -59,6 +61,7 @@ const HomePage = ({
           </p>
         </div>
 
+        {/* flip card */}
         <div className="flip-card">
           <div className="card-inner">
             <div className="card-front">
@@ -84,6 +87,7 @@ const HomePage = ({
         </div>
       </main>
 
+      {/* sidebar with volunteer registrations */}
       <aside className="homepage-sidebar">
         <h2>Your Volunteer Registrations</h2>
 
